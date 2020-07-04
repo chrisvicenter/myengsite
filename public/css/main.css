@@ -4,10 +4,10 @@
     margin-top:50px;
 }
 
-.btn{
+/*.btn{
     background-color: #04667D;
     color: white;
-}
+}*/
 
 footer{
     padding: 10px 10px 0 10px;
@@ -23,7 +23,7 @@ footer{
 }
 
 .btn-reserva{
-    width: 100%;    
+    width: 100%;
 }
 
 .footer-addres-icon{

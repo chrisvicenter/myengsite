@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="font/css/open-iconic-bootstrap.min.css">
     <title>Guia hoteles</title>
 </head>
