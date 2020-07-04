@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('font/css/open-iconic-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="font/css/open-iconic-bootstrap.min.css">
     <title>Guia hoteles</title>
 </head>
 
 <body>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
-    <script src="{{asset('popper.js/dist/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="popper.js/dist/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -37,7 +37,7 @@
             </ul>
         </div>
     </nav>
-    
+
 
     <div class="jumbotron">
         <h1>Hoteles</h1>
