@@ -29,7 +29,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" href="./index.html">Home</a></li>
+                <li class="nav-item active"><a class="nav-link" href="./Prueba">Prueba</a></li>
                 <li class="nav-item "><a class=" nav-link " href="./about.html ">Nosotros</a></li>
                 <li class="nav-item "><a class="nav-link " href="./precios.html">Precios</a></li>
                 <li class="nav-item "><a class="nav-link " href="# ">Términos y condiciones</a></li>
