@@ -12,6 +12,7 @@
 }
 
 
+
 /*Imagen niños jumbotron*/
 
 .imgjupng {
@@ -19,6 +20,20 @@
     height: 85px;
     margin-top: -5px;
     margin-bottom: 0px;
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+footer{
+    padding: 10px 10px 10px 10px;
+    background-color: #4bc4d1;
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+
 }
 
 
@@ -80,6 +95,7 @@
 }
 
 
+
 /*imagenes*/
 
 .rowpad {
@@ -112,12 +128,6 @@
     color: white;
 }
 
-
-/*Footer final de la pagina*/
-
-footer {
-    color: wheat;
-    padding: 10px 10px 0 10px;
-    background-color: #4bc4d1;
-    margin-bottom: 0px;
+.footer-end-link{
+    color: white;
 }
