@@ -12,7 +12,6 @@
 }
 
 
-
 /*Imagen niños jumbotron*/
 
 .imgjupng {
@@ -22,11 +21,11 @@
     margin-bottom: 0px;
 }
 
-body{
+body {
     font-family: 'Montserrat', sans-serif;
 }
 
-footer{
+footer {
     padding: 10px 10px 10px 10px;
     background-color: #4bc4d1;
     color: white;
@@ -34,7 +33,6 @@ footer{
     margin-top: 1px;
     margin-left: 0px;
     margin-right: 0px;
-
 }
 
 
@@ -96,7 +94,6 @@ footer{
 }
 
 
-
 /*imagenes*/
 
 .rowpad {
@@ -129,6 +126,6 @@ footer{
     color: white;
 }
 
-.footer-end-link{
+.footer-end-link {
     color: white;
 }

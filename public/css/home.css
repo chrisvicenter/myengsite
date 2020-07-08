@@ -1,0 +1,205 @@
+body {
+    background-image: url("../images/double-bubble-outline.png");
+    font-family: 'Montserrat', sans-serif;
+}
+
+.colorcntner {
+    background-color: white;
+}
+
+.jumbotron {
+    margin-bottom: -3%;
+    margin-top: -2.5%;
+    background-color: white;
+}
+
+
+/*iamgenes del carousel*/
+
+.imgtmncrsl {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+
+/*imagenes*/
+
+.imgtmn {
+    width: 100%;
+}
+
+
+/*Menú*/
+
+.navbar {
+    margin-top: 0px;
+    background-color: #083b66;
+}
+
+
+/*Imagen niños jumbotron*/
+
+.imgjupng {
+    width: 85px;
+    height: 85px;
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+
+
+/*Imagen myensite jumbotron*/
+
+.imgjupngti {
+    height: 75px;
+    margin-left: 2%;
+    margin-bottom: 0px;
+}
+
+
+/*Imagenes Carousel*/
+
+.carouseltmn {
+    height: 375px;
+}
+
+.captionCrl {
+    width: auto;
+    height: 100%;
+    color: #fff;
+    margin: 0;
+    margin-left: 60%;
+    margin-right: 1%;
+    background-color: rgba(222, 226, 221, .7);
+    /* asignar el color y  transparencia */
+    position: absolute;
+    bottom: 0;
+}
+
+.titlecapt {
+    padding-top: 15%;
+    color: #4bc4d1;
+    font-size: 40px;
+}
+
+.txtcapt {
+    color: #083b66;
+}
+
+
+/* texto imagenes*/
+
+.caption {
+    width: 95%;
+    color: #fff;
+    margin: 0;
+    /*background-color: rgba(0, 0, 0, .5);*/
+    background-color: rgba(222, 226, 221, .6);
+    /* asignar el color y  transparencia */
+    position: absolute;
+    bottom: 0;
+}
+
+.titlemost {
+    color: #4bc4d1;
+}
+
+
+/*imagenes*/
+
+.rowtop {
+    padding-top: 10px;
+}
+
+.colorcont {
+    color: black;
+}
+
+.sizecont {
+    font-size: 13px;
+}
+
+.tmncont {
+    height: 315px;
+}
+
+
+/*Footer container*/
+
+.foot {
+    color: white;
+    padding: 10px 10px 0 10px;
+    background-color: #414141;
+}
+
+.foot a {
+    color: white;
+}
+
+
+/*Footer final de la pagina*/
+
+footer {
+    color: wheat;
+    padding: 10px 10px 0 10px;
+    background-color: #4bc4d1;
+    margin-bottom: 0px;
+}
+
+@media (max-width: 991.98px) {
+    /*Imagenes Carousel*/
+    .carouseltmn {
+        height: 300px;
+    }
+    .captionCrl {
+        width: auto;
+        height: 100%;
+        color: #fff;
+        margin: 0;
+        margin-left: 30%;
+        margin-right: 1%;
+        background-color: rgba(222, 226, 221, .7);
+        /* asignar el color y  transparencia */
+        position: absolute;
+        bottom: 0;
+    }
+    .titlecapt {
+        padding-top: 10%;
+        color: #4bc4d1;
+        font-size: 25px;
+    }
+    .txtcapt {
+        color: #083b66;
+        font-size: 14px;
+    }
+    /*Imagen niños jumbotron*/
+    .imgjupng {
+        width: 60px;
+        height: 60px;
+        margin-top: -5px;
+        margin-bottom: 0px;
+    }
+    /*Imagen myensite jumbotron*/
+    .imgjupngti {
+        height: 45px;
+        margin-left: 2%;
+        margin-bottom: 0px;
+    }
+    /*imagenes*/
+    .tmncont {
+        height: 200px;
+    }
+    .caption {
+        width: 90%;
+        color: #fff;
+        margin: 0;
+        /*background-color: rgba(0, 0, 0, .5);*/
+        background-color: rgba(222, 226, 221, .6);
+        /* asignar el color y  transparencia */
+        position: absolute;
+        bottom: 0;
+    }
+    .sizetlt {
+        font-size: 14px;
+    }
+}
