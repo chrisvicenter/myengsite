@@ -1,35 +1,6 @@
-body {
-    background-image: url("../images/double-bubble-outline.png");
-}
-
-.colorcntner {
-    background-color: white;
-}
-
 .jumbotron {
     margin-bottom: -3%;
     margin-top: -2.5%;
-}
-
-.bodymrg {
-    margin-left: -1%;
-    margin-right: -1%;
-}
-
-
-/*iamgenes del carousel*/
-
-.imgtmncrsl {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-}
-
-
-/*imagenes*/
-
-.imgtmn {
-    width: 100%;
 }
 
 
@@ -50,6 +21,20 @@ body {
     margin-bottom: 0px;
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+footer {
+    padding: 10px 10px 10px 10px;
+    background-color: #4bc4d1;
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 
 /*Imagen myensite jumbotron*/
 
@@ -62,13 +47,14 @@ body {
 
 /*Imagenes Carousel*/
 
-.carouseltmn {
-    height: 375px;
+.imgcarousel {
+    height: 575px;
+    width: 100%;
 }
 
 .captionCrl {
     width: auto;
-    height: 100%;
+    height: 575px;
     color: #fff;
     margin: 0;
     margin-left: 60%;
@@ -92,6 +78,10 @@ body {
 
 /*Prueba texto imagenes*/
 
+.thumbnail {
+    position: relative;
+}
+
 .caption {
     width: 95%;
     color: #fff;
@@ -106,20 +96,21 @@ body {
 
 /*imagenes*/
 
+.rowpad {
+    margin-right: 1%;
+}
+
 .rowtop {
-    padding-top: 1%;
+    padding-top: 2%;
+}
+
+.imgcont {
+    height: 250px;
+    width: 100%;
 }
 
 .colorcont {
     color: black;
-}
-
-.sizecont {
-    font-size: 13px;
-}
-
-.tmncont {
-    height: 315px;
 }
 
 
@@ -135,70 +126,6 @@ body {
     color: white;
 }
 
-
-/*Footer final de la pagina*/
-
-footer {
-    color: wheat;
-    padding: 10px 10px 0 10px;
-    background-color: #4bc4d1;
-    margin-bottom: 0px;
-}
-
-@media (max-width: 991.98px) {
-    /*Imagenes Carousel*/
-    .carouseltmn {
-        height: 300px;
-    }
-    .captionCrl {
-        width: auto;
-        height: 100%;
-        color: #fff;
-        margin: 0;
-        margin-left: 30%;
-        margin-right: 1%;
-        background-color: rgba(222, 226, 221, .7);
-        /* asignar el color y  transparencia */
-        position: absolute;
-        bottom: 0;
-    }
-    .titlecapt {
-        padding-top: 10%;
-        color: #4bc4d1;
-        font-size: 25px;
-    }
-    .txtcapt {
-        color: #083b66;
-        font-size: 14px;
-    }
-    /*Imagen niños jumbotron*/
-    .imgjupng {
-        width: 50px;
-        height: 50px;
-        margin-top: -5px;
-        margin-bottom: 0px;
-    }
-    /*Imagen myensite jumbotron*/
-    .imgjupngti {
-        height: 40px;
-        margin-left: 2%;
-        margin-bottom: 0px;
-    }
-    /*imagenes*/
-    .tmncont {
-        height: 200px;
-    }
-    .caption {
-        width: 90%;
-        color: #fff;
-        margin: 0;
-        /*background-color: rgba(0, 0, 0, .5);*/
-        background-color: rgba(222, 226, 221, .6);
-        /* asignar el color y  transparencia */
-        position: absolute;
-        bottom: 0;
-    }
-    .sizetlt {
-        font-size: 14px;
-    }
+.footer-end-link {
+    color: white;
 }
