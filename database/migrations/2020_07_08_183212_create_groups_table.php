@@ -17,7 +17,9 @@ class CreateGroupsTable extends Migration
             $table->id();
 
             $table->string('name', 128);
-            $table->string('slug', 128)->unique(); //URL amigable            
+            $table->string('slug', 128)->unique(); //URL amigable 
+            
+            $table->timestamps();
         });
     }
 

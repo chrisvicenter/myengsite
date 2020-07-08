@@ -36,7 +36,7 @@ class CreatePostsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('unit_id')->references('id')->on('users')
+            $table->foreign('unit_id')->references('id')->on('units')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
