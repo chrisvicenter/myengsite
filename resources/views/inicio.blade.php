@@ -36,20 +36,20 @@
         <h1 class="d-flex justify-content-center" style="color: #083b66;">WEBSITE UNDER DEVELOPMENT</h1>
     </div>
 
-   
+
 
     <footer>
         <div class="container">
-        <div class="row d-flex align-items-center">
-            <div class="col">
-                My EnG Site 2020 - NanoSoft100
+            <div class="row d-flex align-items-center">
+                <div class="col">
+                    My EnG Site 2020 - NanoSoft100
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <a href="#" class="footer-end-link">Home </a>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="#" class="footer-end-link">Contacto</a>
+                </div>
             </div>
-            <div class="col d-flex justify-content-end">
-                <a href="#" class="footer-end-link">Home </a>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <a href="#" class="footer-end-link">Contacto</a>
-            </div>
-        </div>
         </div>
     </footer>
 </body>
