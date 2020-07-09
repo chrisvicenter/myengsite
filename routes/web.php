@@ -20,3 +20,16 @@ Route::get('/', function () {
 Route::get('/home', function(){
     return view('home');
 });
+
+Route::get('/Prueba', function(){
+    return view('Prueba');
+});
+
+//Se generar la vista para el aula virtual
+Auth::routes();
+
+Route::redirect('/class','vclass');
+
+Route::get('vclass', 'Web\PageController@vclass')->name('vclass');
+
+Route::get('vclass{slug}', 'Web\PageController@post')->name('post');
