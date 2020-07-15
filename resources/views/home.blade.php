@@ -1,8 +1,9 @@
 @extends("layouts.plantilla")
 <!doctype html>
-<html lang="en">
+<html lang="en" class="	font-effect-fire">
 
 <head>
+<link rel="stylesheet" href="css/home.css">
     <title>My EnG Site</title>
 </head>
 
@@ -58,7 +59,7 @@
         <!--Texto del carousel-->
         <div class="captionCrl d-none d-md-block d-flex" href="#carouselControls">
             <div class="container">
-                <h2 class="text-center titlecapt">Welcome</h2>
+                <h2 class="text-center titlecapt shadowtilt">Welcome</h2>
                 <p class="txtcapt">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at risus nec neque tincidunt luctus vel finibus mi.
                     Curabitur non tempor lorem, eget maximus nulla. Mauris venenatis ante non laoreet consequat.
@@ -79,13 +80,13 @@
     </div>
     <!--fin del carousel-->
     <hr>
-    <h3 class="titlemost"><em>Most Outstanding</em></h3>
+    <h3 class="titlemost text-center"><em>Most Outstanding</em></h3>
     <div class="d-flex flex-wrap ">
         <div class="carousel-inner">
-            <div class="row">
+            <div class="row imgdisn">
                 <div class="col-sm-6  d-flex flex-column tmncont ">
                     <div class="text-center">
-                        <img src="images/imgdrg.jpg" class="imgtmn">
+                        <img src="images/imgdrg.jpg" class="imgtmn rounded">
                     </div>
                     <div class="caption d-none d-md-block d-flex ">
                         <h5 class="ml-2 colorcont sizetlt">Lorem ipsum</h5>
@@ -94,7 +95,7 @@
                 </div>
                 <div class="col-sm-6  d-flex flex-column tmncont ">
                     <div class="text-center">
-                        <img src="images/book-4133883_1280.jpg" class="imgtmn">
+                        <img src="images/book-4133883_1280.jpg" class="imgtmn rounded">
                     </div>
                     <div class="caption d-none d-md-block d-flex ">
                         <h5 class="ml-2 colorcont sizetlt">Lorem ipsum</h5>
@@ -104,10 +105,10 @@
             </div>
         </div>
         <div class="carousel-inner rowtop">
-            <div class="row">
+            <div class="row imgdisn ">
                 <div class="col-sm-6  d-flex flex-column tmncont">
-                    <div class="text-center">
-                        <img src="images/imgvndo.jpg" class="imgtmn">
+                    <div class="text-center ">
+                        <img src="images/imgvndo.jpg" class="imgtmn rounded">
                     </div>
                     <div class="caption d-none d-md-block d-flex ">
                         <h5 class="ml-2 colorcont sizetlt">Lorem ipsum</h5>
@@ -117,7 +118,7 @@
                 </div>
                 <div class="col-sm-6  d-flex flex-column tmncont ">
                     <div class="text-center">
-                        <img src="images/imgastrn.jpg" class="imgtmn">
+                        <img src="images/imgastrn.jpg" class="imgtmn rounded">
                     </div>
                     <div class="caption d-none d-md-block d-flex ">
                         <h5 class="ml-2 colorcont sizetlt">Lorem ipsum</h5>

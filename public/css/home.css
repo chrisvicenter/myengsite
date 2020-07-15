@@ -1,16 +1,20 @@
+@import url(plantila.css);
 body {
-    background-image: url("../images/double-bubble-outline.png");
-    font-family: 'Montserrat', sans-serif;
+    background-image: url("../images/dolphin-background-5386747_1920.jpg");
+    background-size: cover;
 }
 
 .colorcntner {
     background-color: white;
+    background-size: cover;
 }
 
 .jumbotron {
-    margin-bottom: -3%;
-    margin-top: -2.5%;
-    background-color: white;
+    background-size: cover;
+}
+
+.shadowtilt {
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .8));
 }
 
 
@@ -27,6 +31,7 @@ body {
 
 .imgtmn {
     width: 100%;
+    height: 100%;
 }
 
 
@@ -35,25 +40,6 @@ body {
 .navbar {
     margin-top: 0px;
     background-color: #083b66;
-}
-
-
-/*Imagen niños jumbotron*/
-
-.imgjupng {
-    width: 85px;
-    height: 85px;
-    margin-top: -5px;
-    margin-bottom: 0px;
-}
-
-
-/*Imagen myensite jumbotron*/
-
-.imgjupngti {
-    height: 75px;
-    margin-left: 2%;
-    margin-bottom: 0px;
 }
 
 
@@ -102,6 +88,8 @@ body {
 
 .titlemost {
     color: #4bc4d1;
+    padding: 5px 5px 10px;
+    font-size: 50px;
 }
 
 
@@ -123,34 +111,8 @@ body {
     height: 315px;
 }
 
-
-/*Footer container*/
-
-.foot {
-    color: white;
-    padding: 10px 10px 0 10px;
-    background-color: #414141;
-}
-
-.foot a {
-    color: white;
-}
-
-
-/*Footer final de la pagina*/
-
-footer {
-    padding: 10px 10px 10px 10px;
-    background-color: #4bc4d1;
-    color: white;
-    margin-bottom: 0px;
-    margin-top: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-.footer-end-link {
-    color: white;
+.imgdisn img:hover {
+    transform: scale(1.03);
 }
 
 @media (max-width: 991.98px) {
@@ -178,19 +140,6 @@ footer {
     .txtcapt {
         color: #083b66;
         font-size: 14px;
-    }
-    /*Imagen niños jumbotron*/
-    .imgjupng {
-        width: 60px;
-        height: 60px;
-        margin-top: -5px;
-        margin-bottom: 0px;
-    }
-    /*Imagen myensite jumbotron*/
-    .imgjupngti {
-        height: 45px;
-        margin-left: 2%;
-        margin-bottom: 0px;
     }
     /*imagenes*/
     .tmncont {
