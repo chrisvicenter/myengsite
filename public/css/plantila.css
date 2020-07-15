@@ -1,0 +1,80 @@
+@charset "UTF-8";
+body {
+    font-family: 'Courgette', sans-serif;
+}
+
+.jumbotron {
+    margin-bottom: -3%;
+    margin-top: -2.5%;
+    background-color: rgba(222, 226, 221, .5);
+}
+
+
+/*Imagen niños jumbotron*/
+
+.imgjupng {
+    width: 85px;
+    height: 85px;
+    margin-top: -5px;
+    margin-bottom: 0px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .5));
+}
+
+
+/*Imagen myensite jumbotron*/
+
+.imgjupngti {
+    height: 75px;
+    margin-left: 2%;
+    margin-bottom: 0px;
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, .5));
+}
+
+
+/*Footer container*/
+
+.foot {
+    color: white;
+    padding: 10px 10px 0 10px;
+    background-color: #414141;
+    font-family: 'Sora', sans-serif;
+}
+
+.foot a {
+    color: white;
+    font-family: 'Sora', sans-serif;
+}
+
+
+/*Footer final de la pagina*/
+
+footer {
+    padding: 10px 10px 10px 10px;
+    background-color: #4bc4d1;
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-family: 'Sora', sans-serif;
+}
+
+.footer-end-link {
+    color: white;
+}
+
+@media (max-width: 991.98px) {
+    /*Imagen niños jumbotron*/
+    .imgjupng {
+        width: 60px;
+        height: 60px;
+        margin-top: -5px;
+        margin-bottom: 0px;
+    }
+    /*Imagen myensite jumbotron*/
+    .imgjupngti {
+        height: 45px;
+        margin-left: 2%;
+        margin-bottom: 0px;
+    }
+}
