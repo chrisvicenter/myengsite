@@ -26,6 +26,10 @@ Route::get('/Prueba', function(){
 });
 
 //Se generar la vista para el aula virtual
+
+Route::get('groups', 'Web\PageController@groups')->name('groups');
+
+//Se generaron rutas de prueba
 Auth::routes();
 
 Route::redirect('/class','vclass');
@@ -33,3 +37,10 @@ Route::redirect('/class','vclass');
 Route::get('vclass', 'Web\PageController@vclass')->name('vclass');
 
 Route::get('vclass{slug}', 'Web\PageController@post')->name('post');
+
+Route::get('unit{slug}', 'Web\PageController@unit')->name('unit');
+
+Route::get('group{slug}', 'Web\PageController@group')->name('group');
+
+
+//Admin

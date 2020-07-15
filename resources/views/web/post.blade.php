@@ -37,7 +37,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item "><a class=" nav-link " href="./about.html ">Challenge</a></li>
                     <li class="nav-item "><a class="nav-link " href="./precios.html">Read</a></li>
                     <li class="nav-item "><a class="nav-link " href="# ">Write</a></li>
@@ -51,7 +51,9 @@
         <!--Breadcrumb página Home-->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="./index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+                <li class="breadcrumb-item" aria-current="#">Algun Grupo</li>
+                <li class="breadcrumb-item active" aria-current="#">{{$post->name}}</li>
             </ol>
         </nav>
 
@@ -65,7 +67,7 @@
 
                         <div class="card-title">
                             Units
-                            <a href="#">{{$post->unit->name}}</a>
+                            <a href="{{route('unit',$post->unit->slug)}}">{{$post->unit->name}}</a>
                         </div>
 
                         @if($post->file)
@@ -83,10 +85,10 @@
                         Groups
 
                         @foreach ($post->groups as $group)
-                        <a href="">
+                        <a href="{{route('group',$group->slug)}}">
                             {{$group->name}}
                         </a>
-                            
+
                         @endforeach
 
                     </div>

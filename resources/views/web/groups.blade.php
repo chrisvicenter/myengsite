@@ -1,6 +1,7 @@
 @extends("layouts.plantilla")
 @section('content')
 <html>
+
 <head>
     <title>Groups</title>
 </head>
@@ -30,38 +31,27 @@
     <!--Breadcrumb página Groups-->
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="class">Groups</a></li>
-        <li class="breadcrumb-item active" aria-current="#">Algun Grupo</li>
+            <li class="breadcrumb-item active"><a href="class">Groups</a></li>
         </ol>
     </nav>
 
     <!--Se consultan todos los posts publicados-->
     <div class="row">
-        <div class="col-sm-12">
-            <h1>Unit 1</h1>
 
-            @foreach($posts as $post)
-            <div class="card d-flex flex-column justify-content-between ml-2 ">
-                <div class="card-body">
-
-                    <h2 class="card-title">{{ $post->name }}</h2>
-
-                    @if($post->file)
-                    <img src="{{ $post->file }}" class="card-img-top">
-
-                    @endif
-                    <p class="card-text">
-                        {{ $post->excerpt }}
-                        <a href="{{ route('post', $post->slug) }}" class="pull-right">Read more</a>
-                    </p>
-
+        @foreach($groups as $group)
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body d-flex justify-content-center">
+                    <h3 class="card-title"><a href="{{route('group',$group->slug)}}">{{ $group->name }}</a></h2>
                 </div>
             </div>
-            @endforeach
-
-            {{ $posts->render() }}
         </div>
+        @endforeach
+        {{ $groups->render() }}
+
     </div>
+
+    <hr>
 
     <!--Footer de la página-->
     @endsection
