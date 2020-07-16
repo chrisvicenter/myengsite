@@ -27,20 +27,31 @@ Route::get('/Prueba', function(){
 
 //Se generar la vista para el aula virtual
 
-Route::get('groups', 'Web\PageController@groups')->name('groups');
 
-//Se generaron rutas de prueba
+Route::get('/group/{slug}', 'Web\PageController@group')->name('group');
+
+//Se generar las rutas administrativas
+
 Auth::routes();
 
-Route::redirect('/class','vclass');
+Route::get('/loginteacher', function(){
+    return view('admin.loginteacher');
+});
 
-Route::get('vclass', 'Web\PageController@vclass')->name('vclass');
+Route::resource('groups', 'Admin\GroupController');
 
-Route::get('vclass{slug}', 'Web\PageController@post')->name('post');
+Route::resource('units', 'Admin\UnitController');
 
-Route::get('unit{slug}', 'Web\PageController@unit')->name('unit');
-
-Route::get('group{slug}', 'Web\PageController@group')->name('group');
+Route::resource('posts', 'Admin\PostController');
 
 
-//Admin
+
+//Se generaron rutas de prueba
+
+
+Route::get('/vclass', 'Web\PageController@vclass')->name('vclass');
+
+Route::get('/vclass/{slug}', 'Web\PageController@post')->name('post');
+
+Route::get('/unit/{slug}', 'Web\PageController@unit')->name('unit');
+

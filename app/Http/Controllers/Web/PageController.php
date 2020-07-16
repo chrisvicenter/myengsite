@@ -29,11 +29,6 @@ class PageController extends Controller
         return view('web.posts', compact('posts'));
     }
 
-    public function groups(){
-        $groups = Group::orderBy('id','ASC')->paginate(5);
-        return view('web.groups', compact('groups'));
-    }
-
     public function group($slug){
         $posts = Post::whereHas('groups', function($query) use ($slug){
             $query->where('slug',$slug);

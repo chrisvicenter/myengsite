@@ -38,7 +38,7 @@
     <!--Se consultan todos los posts publicados-->
     <div class="row">
         <div class="col-sm-12">
-            <h1>Unit 1</h1>
+            <h1>Posts</h1>
 
             @foreach($posts as $post)
             <div class="card d-flex flex-column justify-content-between ml-2 ">
