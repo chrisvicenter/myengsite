@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Controllers\Controller;
 
 use App\Post;
-
+use App\Unit;
+use App\Group;
 
 
 class PostController extends Controller
@@ -24,7 +27,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'ASC')->paginate();
+        $posts = Post::orderBy('id', 'DESC')
+            ->where('user_id', auth()->user()->id)
+            ->paginate();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -35,7 +40,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $units = Unit::orderBy('name', 'ASC')->pluck('name', 'id');
+        $groups = Group::orderBy('name', 'ASC')->get();
+
+        return view('admin.posts.create', compact('units', 'groups'));
     }
 
     /**
@@ -48,8 +56,16 @@ class PostController extends Controller
     {
         $post = Post::create($request->all());
 
-        return redirect()->route('posts.edit', $post->id)
-            ->with('info','Post created successfully');
+        //IMAGE 
+        if($request->file('image')){
+            $path = Storage::disk('public')->put('image',  $request->file('image'));
+            $post->fill(['file' => asset($path)])->save();
+        }
+
+        //GROUPS
+        $post->groups()->attach($request->get('groups'));
+
+        return redirect()->route('posts.edit', $post->id)->with('info', 'Entrada creada con éxito');
     }
 
     /**
@@ -73,9 +89,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        
-        return view ('admin.posts.edit', compact('post'));
+        $units = Unit::orderBy('name', 'ASC')->pluck('name', 'id');
+        $groups       = Group::orderBy('name', 'ASC')->get();
+        $post       = Post::find($id);
+
+        return view('admin.posts.edit', compact('post', 'units', 'groups'));
     }
 
     /**
@@ -88,11 +106,19 @@ class PostController extends Controller
     public function update(PostUpdateRequest $request, $id)
     {
         $post = Post::find($id);
-        
+
         $post->fill($request->all())->save();
 
-        return redirect()->route('posts.edit', $post->id)
-            ->with('info','Post successfully updated');
+        //IMAGE 
+        if($request->file('image')){
+            $path = Storage::disk('public')->put('image',  $request->file('image'));
+            $post->fill(['file' => asset($path)])->save();
+        }
+
+        //GROUPS
+        $post->groups()->sync($request->get('groups'));
+
+        return redirect()->route('posts.edit', $post->id)->with('info', 'Entrada actualizada con éxito');
     }
 
     /**
@@ -103,7 +129,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id)->delete();
+        $post = Post::find($id)->delete();        
 
         return back()->with('info', 'Properly removed');
     }
