@@ -1,0 +1,11 @@
+.cursorcolor a {
+    color: #083b66;
+}
+
+.cursorcolor div:hover {
+    background-color: #4bc4d1;
+}
+
+.cursorcolor a:hover {
+    color: white;
+}

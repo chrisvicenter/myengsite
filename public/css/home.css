@@ -1,13 +1,9 @@
 @import url(plantila.css);
-body {
+
+/*body {
     background-image: url("../images/dolphin-background-5386747_1920.jpg");
     background-size: cover;
-}
-
-.colorcntner {
-    background-color: white;
-    background-size: cover;
-}
+}*/
 
 .jumbotron {
     background-size: cover;
@@ -32,14 +28,6 @@ body {
 .imgtmn {
     width: 100%;
     height: 100%;
-}
-
-
-/*Menú*/
-
-.navbar {
-    margin-top: 0px;
-    background-color: #083b66;
 }
 
 

@@ -36,4 +36,9 @@ class PageController extends Controller
         return view('web.posts', compact('posts'));
 
     }
+
+    public function allgroup(){
+        $allgroup = Group::orderBy('id')->paginate(5);
+        return view('web.allgroup', compact('allgroup'));
+    }
 }

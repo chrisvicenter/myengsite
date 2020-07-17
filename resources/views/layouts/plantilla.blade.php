@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/plantila.css">
-    <link rel="stylesheet" href="font/css/open-iconic-bootstrap.min.css">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/plantila.css') }}">
+    <link rel="stylesheet" href="{{ asset('font/css/open-iconic-bootstrap.min.css') }}">
     <link rel="shortcut icon" href="images/ninosICO.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
@@ -17,17 +17,17 @@
 <body>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="jquery/dist/jquery.min.js"></script>
-    <script src="popper.js/dist/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ asset('jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('popper.js/dist/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
     <!--Jumbotron-->
     <div>
         <div class="jumbotron ">
         
             <div class="container">
-                <img src="images/ninosPNG.png" class="img-fluid imgjupng float-left" alt="Responsive image">
-                <img src="images/myengsite.png" class="img-fluid imgjupngti " alt="Responsive image">
+                <img src="{{ asset('images/ninosPNG.png')}}" class="img-fluid imgjupng float-left" alt="Responsive image">
+                <img src="{{ asset('images/myengsite.png')}}" class="img-fluid imgjupngti " alt="Responsive image">
             </div>
         </div>
         <!--Fin Jumbotron-->

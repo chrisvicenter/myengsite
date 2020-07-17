@@ -3,7 +3,7 @@
 <html lang="en" class="	font-effect-fire">
 
 <head>
-<link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/home.css">
     <title>My EnG Site</title>
 </head>
 
