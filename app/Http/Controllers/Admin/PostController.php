@@ -2,11 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostStoreRequest;
+use App\Http\Requests\PostUpdateRequest;
+
+use Illuminate\Support\Facades\Storage;
+
+use App\Http\Controllers\Controller;
+
+use App\Post;
+use App\Unit;
+use App\Group;
+
 
 class PostController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +27,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('id', 'DESC')
+            ->where('user_id', auth()->user()->id)
+            ->paginate();
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -24,7 +40,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $units = Unit::orderBy('name', 'ASC')->pluck('name', 'id');
+        $groups = Group::orderBy('name', 'ASC')->get();
+
+        return view('admin.posts.create', compact('units', 'groups'));
     }
 
     /**
@@ -33,9 +52,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        //
+        $post = Post::create($request->all());
+
+        //IMAGE 
+        if($request->file('image')){
+            $path = Storage::disk('public')->put('image',  $request->file('image'));
+            $post->fill(['file' => asset($path)])->save();
+        }
+
+        //GROUPS
+        $post->groups()->attach($request->get('groups'));
+
+        return redirect()->route('posts.edit', $post->id)->with('info', 'Post created successfully');
     }
 
     /**
@@ -46,7 +76,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        $this->authorize('pass',$post);
+        
+        return view ('admin.posts.show', compact('post'));
     }
 
     /**
@@ -57,7 +90,14 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post       = Post::find($id);
+        $this->authorize('pass',$post);
+
+        $units = Unit::orderBy('name', 'ASC')->pluck('name', 'id');
+        $groups       = Group::orderBy('name', 'ASC')->get();
+
+
+        return view('admin.posts.edit', compact('post', 'units', 'groups'));
     }
 
     /**
@@ -67,9 +107,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostUpdateRequest $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->fill($request->all())->save();
+
+        //IMAGE 
+        if($request->file('image')){
+            $path = Storage::disk('public')->put('image',  $request->file('image'));
+            $post->fill(['file' => asset($path)])->save();
+        }
+
+        //GROUPS
+        $post->groups()->sync($request->get('groups'));
+
+        return redirect()->route('posts.edit', $post->id)->with('info', 'Successfully updated post');
     }
 
     /**
@@ -80,6 +133,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id); 
+        $this->authorize('pass',$post);
+        
+        $post->delete();
+
+        return back()->with('info', 'Properly removed');
     }
 }

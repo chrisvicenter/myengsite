@@ -25,7 +25,7 @@ class GroupStoreRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'slug'=>'required|unique:groups, slug',
+            'slug'=>'required|unique:groups,slug',
         ];
     }
 }
