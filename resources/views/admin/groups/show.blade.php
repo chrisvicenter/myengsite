@@ -10,8 +10,8 @@
                 </div>
 
                 <div class="panel-body">
-                    <p><strong>Nombre</strong> {{ $group->name }}</p>
-                    <p><strong>Slug</strong> {{ $group->slug }}</p>
+                    <p><strong>Name:</strong> {{ $group->name }}</p>
+                    <p><strong>Slug:</strong> {{ $group->slug }}</p>
                 </div>
             </div>
         </div>

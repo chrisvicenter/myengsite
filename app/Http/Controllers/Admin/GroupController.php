@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\GroupStoreRequest;
+use App\Http\Requests\GroupUpdateRequest;
+
+use App\Http\Controllers\Controller;
+
 use App\Group;
-use App\Http\GroupStoreRequest;
-use App\Http\GroupUpdateRequest;
+
 
 
 class GroupController extends Controller
@@ -46,7 +49,7 @@ class GroupController extends Controller
         $group = Group::create($request->all());
 
         return redirect()->route('groups.edit', $group->id)
-            ->with('info','Etiqueta creada con éxito');
+            ->with('info','Group created successfully');
     }
 
     /**
@@ -86,10 +89,10 @@ class GroupController extends Controller
     {
         $group = Group::find($id);
         
-        $group->fill($request->all()->save());
+        $group->fill($request->all())->save();
 
         return redirect()->route('groups.edit', $group->id)
-            ->with('info','Etiqueta actualizada con éxito');
+            ->with('info','Group successfully updated');
     }
 
     /**
@@ -102,6 +105,6 @@ class GroupController extends Controller
     {
         $group = Group::find($id)->delete();
 
-        return back()->with('info', 'Eliminado correctamente');
+        return back()->with('info', 'Properly removed');
     }
 }

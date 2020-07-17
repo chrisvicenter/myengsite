@@ -6,9 +6,9 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Lista de Etiquetas 
+                    List of Groups
                     <a href="{{ route('groups.create') }}" class="pull-right btn btn-sm btn-primary">
-                        Crear
+                        New Group
                     </a>
                 </div>
 
@@ -18,7 +18,7 @@
                         <thead>
                             <tr>
                                 <th width="10px">ID</th>
-                                <th>Nombre</th>
+                                <th>Name</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
@@ -28,15 +28,19 @@
                                 <td>{{ $group->id }}</td>
                                 <td>{{ $group->name }}</td>
                                 <td width="10px">
-                                    <a href="{{ route('groups.show', $group->id) }}" class="btn btn-sm btn-default">Ver</a>
+                                    <a href="{{ route('groups.show', $group->id) }}" class="btn btn-sm btn-default">
+                                        Show
+                                    </a>
                                 </td>
                                 <td width="10px">
-                                    <a href="{{ route('groups.edit', $group->id) }}" class="btn btn-sm btn-default">Editar</a>
+                                    <a href="{{ route('groups.edit', $group->id) }}" class="btn btn-sm btn-default">
+                                        Edit
+                                    </a>
                                 </td>
                                 <td width="10px">
                                     {!! Form::open(['route' => ['groups.destroy', $group->id], 'method' => 'DELETE']) !!}
                                         <button class="btn btn-sm btn-danger">
-                                            Eliminar
+                                            Delete
                                         </button>                           
                                     {!! Form::close() !!}
                                 </td>

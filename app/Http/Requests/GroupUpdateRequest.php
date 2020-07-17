@@ -24,8 +24,8 @@ class GroupUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'slug'=>'required|unique:groups, slug,' . $this->group,
+            'name' => 'required',
+            'slug' => 'required|unique:groups,slug,' . $this->group,
         ];
     }
 }
