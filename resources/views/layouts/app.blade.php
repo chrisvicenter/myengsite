@@ -19,6 +19,10 @@
 
 <body>
 
+    <script src="{{ asset('jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('popper.js/dist/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

@@ -1,4 +1,4 @@
-@extends('layouts.apptwo')
+@extends('layouts.app')
 
 @section('content')
 Formulario
