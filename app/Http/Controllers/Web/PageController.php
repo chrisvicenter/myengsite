@@ -32,7 +32,7 @@ class PageController extends Controller
     public function group($slug){
         $posts = Post::whereHas('groups', function($query) use ($slug){
             $query->where('slug',$slug);
-        })->orderBy('id','ASC')->where('status','PUBLISHED')->paginate(3);
+        })->orderBy('id','DESC')->where('status','PUBLISHED')->paginate(3);
         return view('web.posts', compact('posts'));
 
     }

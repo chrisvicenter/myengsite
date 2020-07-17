@@ -1,5 +1,4 @@
 @extends("layouts.plantilla")
-@section('content')
 <html>
 
 <head>
@@ -16,8 +15,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item "><a class="nav-link" href="home">Home</a></li>
-                    <li class="nav-item active"><a class=" nav-link " href="#">Groups</a></li>
+                    <li class="nav-item "><a class="nav-link" href="../home">Home</a></li>
+                    <li class="nav-item active"><a class=" nav-link " href="../allgroup">Groups</a></li>
                     <li class="nav-item "><a class="nav-link " href="./precios.html">Read</a></li>
                     <li class="nav-item "><a class="nav-link " href="# ">Write</a></li>
                 </ul>
@@ -25,15 +24,17 @@
         </div>
     </nav>
     @endsection
-
+    <?php
+    $grp  = $_GET['grpname'];
+    $grpsl = $_GET['grpslug'];
+    ?>
     @section("container")
     <!--Breadcrumb página Groups-->
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="class">Groups</a></li>
+            <li class="breadcrumb-item"><a href="/allgroup">Groups</a></li>
             <li class="breadcrumb-item active" aria-current="#"><a href="#">
                     <?php
-                    $grp  = $_GET['grpname'];
                     echo $grp;
                     ?>
                 </a></li>
@@ -46,6 +47,7 @@
             <h1>Posts</h1>
 
             @foreach($posts as $post)
+            <br>
             <div class="card d-flex flex-column justify-content-between ml-2 ">
                 <div class="card-body">
 
@@ -57,17 +59,22 @@
                     @endif
                     <p class="card-text">
                         {{ $post->excerpt }}
-                        <a href="{{ route('post', $post->slug) }}?grpname={{$grp}}" class="pull-right">Read more</a>
+                        <a href="{{ route('post', $post->slug) }}?grpname={{$grp}}&grpslug={{$grpsl}}" class="pull-right">Read more</a>
                     </p>
 
                 </div>
             </div>
             @endforeach
+            <br>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {{ $posts->withQueryString()->render()}}
+                </ul>
+            </nav>
 
-            {{ $posts->render() }}
         </div>
     </div>
-
+    <hr>
     <!--Footer de la página-->
     @endsection
     @section("footer")

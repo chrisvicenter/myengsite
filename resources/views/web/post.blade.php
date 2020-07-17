@@ -16,8 +16,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item "><a class="nav-link" href="home">Home</a></li>
-                    <li class="nav-item active"><a class=" nav-link " href="#">Groups</a></li>
+                    <li class="nav-item "><a class="nav-link" href="../home">Home</a></li>
+                    <li class="nav-item active"><a class=" nav-link " href="../allgroup">Groups</a></li>
                     <li class="nav-item "><a class="nav-link " href="./precios.html">Read</a></li>
                     <li class="nav-item "><a class="nav-link " href="# ">Write</a></li>
                 </ul>
@@ -25,15 +25,17 @@
         </div>
     </nav>
     @endsection
-
+    <?php
+    $grp  = $_GET['grpname'];
+    $grpsl = $_GET['grpslug'];
+    ?>
     @section("container")
     <!--Breadcrumb página Groups-->
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="class">Groups</a></li>
-            <li class="breadcrumb-item" aria-current="#"><a href="#">
+            <li class="breadcrumb-item"><a href="/allgroup">Groups</a></li>
+            <li class="breadcrumb-item" aria-current="#"><a href="{{route('group',$grpsl)}}?grpname={{$grp}}&grpslug={{ $grpsl}}">
                     <?php
-                    $grp  = $_GET['grpname'];
                     echo $grp;
                     ?>
                 </a></li>
@@ -50,10 +52,7 @@
 
                 <div class="card-body">
 
-                    <div class="card-title">
-                        Units
-                        <a href="{{route('unit',$post->unit->slug)}}">{{$post->unit->name}}</a>
-                    </div>
+
 
                     @if($post->file)
                     <img src="{{ $post->file }}" class="card-img-top">
@@ -65,22 +64,15 @@
                     <hr>
 
                     {!! $post->body !!}
-                    <hr>
 
-                    Groups
 
-                    @foreach ($post->groups as $group)
-                    <a href="{{route('group',$group->slug)}}?grpname={{$group->name}}">
-                        {{$group->name}}
-                    </a>
 
-                    @endforeach
 
                 </div>
             </div>
         </div>
     </div>
-
+    <hr>
     <!--Footer de la página-->
     @endsection
     @section("footer")
