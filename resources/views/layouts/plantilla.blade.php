@@ -35,7 +35,7 @@
     </div>
     <div class="container colorcntner shadow">
         @yield("container")
-
+        
         <div class="foot">
             <div class="row">
                 <div class="col-sm-4 d-flex flex-column align-items-start ">

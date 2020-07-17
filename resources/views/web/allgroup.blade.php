@@ -1,6 +1,5 @@
 @extends("layouts.plantilla")
-@section('content')
-<html>
+<html lang="en">
 
 <head>
     <link rel="stylesheet" href="{{ asset('css/allgroup.css') }}">
@@ -42,7 +41,10 @@
         <div class="col-sm cursorcolor">
             <div class="card">
                 <div class="card-body d-flex justify-content-center text-center">
-                    <h3 class="card-title"><a href="{{route('group',$group->slug)}}?grpname={{ $group->name }}">{{ $group->name }}</a></h3>
+                    <h3 class="card-title">
+                        <a href="{{route('group',$group->slug)}}?grpname={{ $group->name }}&grpslug={{ $group->slug }}">{{ $group->name }}</a>
+                    
+                    </h3>
                 </div>
             </div>
         </div>
@@ -57,3 +59,5 @@
     @section("footer")
     @endsection
 </body>
+
+</html>
