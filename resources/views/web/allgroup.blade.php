@@ -3,6 +3,7 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="{{ asset('css/allgroup.css') }}">
     <title>Groups</title>
 </head>
 
@@ -30,56 +31,26 @@
     <!--Breadcrumb página Groups-->
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="class">Groups</a></li>
-            <li class="breadcrumb-item" aria-current="#"><a href="#">
-                    <?php
-                    $grp  = $_GET['grpname'];
-                    echo $grp;
-                    ?>
-                </a></li>
-            <li class="breadcrumb-item active" aria-current="#">{{$post->name}}</li>
+            <li class="breadcrumb-item active"><a href="class">Groups</a></li>
         </ol>
     </nav>
 
     <!--Se consultan todos los posts publicados-->
     <div class="row">
-        <div class="col-sm-12">
-            <h1>{{$post->name}}</h1>
 
-            <div class="card d-flex flex-column justify-content-between ml-2 ">
-
-                <div class="card-body">
-
-                    <div class="card-title">
-                        Units
-                        <a href="{{route('unit',$post->unit->slug)}}">{{$post->unit->name}}</a>
-                    </div>
-
-                    @if($post->file)
-                    <img src="{{ $post->file }}" class="card-img-top">
-                    @endif
-
-                    <p class="card-text">
-                        {{ $post->excerpt }}
-                    </p>
-                    <hr>
-
-                    {!! $post->body !!}
-                    <hr>
-
-                    Groups
-
-                    @foreach ($post->groups as $group)
-                    <a href="{{route('group',$group->slug)}}?grpname={{$group->name}}">
-                        {{$group->name}}
-                    </a>
-
-                    @endforeach
-
+        @foreach($allgroup as $group)
+        <div class="col-sm cursorcolor">
+            <div class="card">
+                <div class="card-body d-flex justify-content-center text-center">
+                    <h3 class="card-title"><a href="{{route('group',$group->slug)}}?grpname={{ $group->name }}">{{ $group->name }}</a></h3>
                 </div>
             </div>
         </div>
+        @endforeach
+        {{ $allgroup->render() }}
+
     </div>
+    <hr>
 
     <!--Footer de la página-->
     @endsection

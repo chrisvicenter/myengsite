@@ -1,6 +1,7 @@
 @extends("layouts.plantilla")
 @section('content')
 <html>
+
 <head>
     <title>Groups</title>
 </head>
@@ -10,8 +11,7 @@
     <!--Menú de la página-->
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container ">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -31,7 +31,12 @@
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="class">Groups</a></li>
-        <li class="breadcrumb-item active" aria-current="#">Algun Grupo</li>
+            <li class="breadcrumb-item active" aria-current="#"><a href="#">
+                    <?php
+                    $grp  = $_GET['grpname'];
+                    echo $grp;
+                    ?>
+                </a></li>
         </ol>
     </nav>
 
@@ -52,7 +57,7 @@
                     @endif
                     <p class="card-text">
                         {{ $post->excerpt }}
-                        <a href="{{ route('post', $post->slug) }}" class="pull-right">Read more</a>
+                        <a href="{{ route('post', $post->slug) }}?grpname={{$grp}}" class="pull-right">Read more</a>
                     </p>
 
                 </div>
