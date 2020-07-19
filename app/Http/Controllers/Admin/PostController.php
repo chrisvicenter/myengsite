@@ -54,17 +54,25 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
+        
         $post = Post::create($request->all());
-
+        
         //IMAGE 
         if($request->file('image')){
             $path = Storage::disk('public')->put('image',  $request->file('image'));
             $post->fill(['file' => asset($path)])->save();
-        }
+        }        
 
+        //FILEALL
+        if($request->file('filex')){
+            $path = Storage::disk('public')->put('filealls',  $request->file('filex'));
+            $post->fill(['fileall' => asset($path)])->save();
+        }
+        
         //GROUPS
         $post->groups()->attach($request->get('groups'));
 
+        
         return redirect()->route('posts.edit', $post->id)->with('info', 'Post created successfully');
     }
 
@@ -118,6 +126,13 @@ class PostController extends Controller
             $path = Storage::disk('public')->put('image',  $request->file('image'));
             $post->fill(['file' => asset($path)])->save();
         }
+
+        //FILEALL
+        if($request->file('filex')){
+            $path = Storage::disk('public')->put('filealls',  $request->file('filex'));
+            $post->fill(['fileall' => asset($path)])->save();
+        }
+        
 
         //GROUPS
         $post->groups()->sync($request->get('groups'));
