@@ -9,7 +9,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/plantila.css') }}">
     <link rel="stylesheet" href="{{ asset('font/css/open-iconic-bootstrap.min.css') }}">
-    <link rel="shortcut icon" href="images/ninosICO.ico" />
+    <link rel="shortcut icon" href="{{ asset('images/ninosICO.ico')}}"/>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
 </head>

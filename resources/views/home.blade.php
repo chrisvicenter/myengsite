@@ -4,7 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="css/home.css">
-    <title>My EnG Site</title>
+    <title>My EnGSite</title>
 </head>
 
 <body>
@@ -20,8 +20,8 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item "><a class=" nav-link " href="allgroup">Groups</a></li>
-                    <li class="nav-item "><a class="nav-link " href="/read">Read</a></li>
-                    <li class="nav-item "><a class="nav-link " href="/write/create ">Write</a></li>
+                    <li class="nav-item "><a class="nav-link " href="read">Read</a></li>
+                    <li class="nav-item "><a class="nav-link " href="write/create">Write</a></li>
 
 
                 </ul>

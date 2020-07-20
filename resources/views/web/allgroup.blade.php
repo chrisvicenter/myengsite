@@ -19,8 +19,8 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item "><a class="nav-link" href="home">Home</a></li>
                     <li class="nav-item active"><a class=" nav-link " href="#">Groups</a></li>
-                    <li class="nav-item "><a class="nav-link " href="./precios.html">Read</a></li>
-                    <li class="nav-item "><a class="nav-link " href="# ">Write</a></li>
+                    <li class="nav-item "><a class="nav-link " href="read">Read</a></li>
+                    <li class="nav-item "><a class="nav-link " href="write/create">Write</a></li>
                 </ul>
             </div>
         </div>
@@ -31,7 +31,6 @@
     <!--Breadcrumb página Groups-->
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="home">Home</a></li>
             <li class="breadcrumb-item active">Groups</li>
         </ol>
     </nav>

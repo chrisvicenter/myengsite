@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item "><a class="nav-link" href="/home">Home</a></li>
-                    <li class="nav-item"><a class=" nav-link " href="/groups">Groups</a></li>
+                    <li class="nav-item"><a class=" nav-link " href="/allgroup">Groups</a></li>
                     <li class="nav-item active"><a class="nav-link " href="#">Read</a></li>
                     <li class="nav-item "><a class="nav-link " href="/write/create ">Write</a></li>
                 </ul>

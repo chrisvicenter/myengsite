@@ -22,9 +22,9 @@ $grpsl = $_GET['grpslug'];
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item "><a class="nav-link" href="home">Home</a></li>
-                    <li class="nav-item active"><a class=" nav-link " href="#">Groups</a></li>
-                    <li class="nav-item "><a class="nav-link " href="./precios.html">Read</a></li>
-                    <li class="nav-item "><a class="nav-link " href="# ">Write</a></li>
+                    <li class="nav-item active"><a class=" nav-link " href="allgroup">Groups</a></li>
+                    <li class="nav-item "><a class="nav-link " href="read">Read</a></li>
+                    <li class="nav-item "><a class="nav-link " href="write/create">Write</a></li>
                 </ul>
             </div>
         </div>
@@ -35,13 +35,12 @@ $grpsl = $_GET['grpslug'];
     <!--Breadcrumb página Groups-->
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="home">Home</a></li>
-            <li class="breadcrumb-item "><a href="/allgroup">
+            <li class="breadcrumb-item"><a href="allgroup">Groups</a></li>
+            <li class="breadcrumb-item active">
                     <?php
                     echo $grp;
                     ?>
-                </a></li>
-            <li class="breadcrumb-item active">Units</li>
+            </li>
         </ol>
     </nav>
 
