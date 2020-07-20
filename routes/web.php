@@ -57,7 +57,18 @@ Route::get('/unit/{slug}', 'Web\PageController@unit')->name('unit');
 
 Route::get('/allgroup', 'Web\PageController@allgroup')->name('allgroup');
 
+
+//Ruta para los modulos read and write
+Route::resource('/read','Web\LibroController');
+Route::resource('/write','Web\LibroController');
+
+//Rutas para reacciones
+Route::get('/Prueba/{idlike}/{like}', 'Web\LibroController@like')->name('like');
+Route::patch('/Prueba/{idsmile}/{smile}', 'Web\LibroController@smile')->name('smile');
+Route::put('/Prueba/{idsorpess}/{sorpess}', 'Web\LibroController@sorpess')->name('sorpess');
+
 Route::get('/allunit', 'Web\PageController@allunit')->name('allunit');
 
 Route::get('/allgroup/{grpsl}/{slug}', 'Web\PageController@filtro')->name('filtro');
+
 
