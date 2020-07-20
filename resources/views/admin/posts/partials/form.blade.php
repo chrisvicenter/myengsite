@@ -1,6 +1,5 @@
 {{ Form::hidden('user_id', auth()->user()->id) }}
 
-
 <div class="form-group">
     {{ Form::label('name', 'Name of post') }}
     {{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
@@ -12,6 +11,10 @@
 <div class="form-group">
     {{ Form::label('image', 'Image') }}
     {{ Form::file('image') }}
+</div>
+<div class="form-group">
+    {{ Form::label('filex', 'File') }}
+    {{ Form::file('filex') }}
 </div>
 <div class="form-group">
 	{{ Form::label('groups', 'Groups') }}

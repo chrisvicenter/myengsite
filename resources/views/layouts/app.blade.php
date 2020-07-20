@@ -11,6 +11,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Icono -->
+    <link rel="shortcut icon" href="{{ asset('images/ninosICO.ico')}}"/>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -52,6 +55,11 @@
                         @endif
 
                         @else
+                        <li class="nav-item">
+                            <a  class="nav-link" href="{{route('posts.index')}}">
+                                Posts
+                            </a>
+                        </li>
                         <li class="nav-item ">
                             <a  class="nav-link" href="{{route('groups.index')}}">
                                 Groups
@@ -61,12 +69,7 @@
                             <a class="nav-link" href="{{route('units.index')}}">
                                 Units
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a  class="nav-link" href="{{route('posts.index')}}">
-                                Posts
-                            </a>
-                        </li>
+                        </li>                      
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
