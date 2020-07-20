@@ -4,8 +4,12 @@
 <head>
     <link rel="stylesheet" href="{{ asset('css/allgroup.css') }}">
     <link rel="shortcut icon" href="images/ninosICO.ico" />
-    <title>Groups</title>
+    <title>Units</title>
 </head>
+<?php
+$grp  = $_GET['grpname'];
+$grpsl = $_GET['grpslug'];
+?>
 
 <body>
     @section("jumbotron")
@@ -32,23 +36,27 @@
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="home">Home</a></li>
-            <li class="breadcrumb-item active">Groups</li>
+            <li class="breadcrumb-item "><a href="/allgroup">
+                    <?php
+                    echo $grp;
+                    ?>
+                </a></li>
+            <li class="breadcrumb-item active">Units</li>
         </ol>
     </nav>
 
     <!--Se consultan todos los posts publicados-->
     <div class="d-flex flex-wrap justify-content-center">
 
-        @foreach($allgroup as $group)
+        @foreach($allunit as $unit)
         <div class="card text-center mb-2 mr-2 cursorcolor" style="width: 10rem;">
             <div class="card-body">
-                <h3 class="card-title">{{ $group->name }} </h3>
-                <a href="/allunit?grpname={{ $group->name }}&grpslug={{ $group->slug }}" class="btn btn-outline-primary">access</a>
-                <!--<a href="{{route('group',$group->slug)}}?grpname={{ $group->name }}&grpslug={{ $group->slug }}" class="btn btn-outline-primary">access</a>-->
+                <h3 class="card-title">{{ $unit->name }} </h3>
+                <a href="{{route('filtro',[$grpsl, $unit->slug ])}}?grpname={{ $grp }}&grpslug={{ $grpsl }}&untname={{ $unit->name }}&untslug={{$unit->slug}}" class="btn btn-outline-primary">access</a>
             </div>
         </div>
         @endforeach
-        {{ $allgroup->render() }}
+        {{ $allunit->render() }}
 
     </div>
     <hr>

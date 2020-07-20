@@ -56,3 +56,8 @@ Route::get('/vclass/{slug}', 'Web\PageController@post')->name('post');
 Route::get('/unit/{slug}', 'Web\PageController@unit')->name('unit');
 
 Route::get('/allgroup', 'Web\PageController@allgroup')->name('allgroup');
+
+Route::get('/allunit', 'Web\PageController@allunit')->name('allunit');
+
+Route::get('/allgroup/{grpsl}/{slug}', 'Web\PageController@filtro')->name('filtro');
+
