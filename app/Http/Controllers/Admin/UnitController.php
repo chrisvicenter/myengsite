@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\UnitStoreRequest;
+use App\Http\Requests\UnitUpdateRequest;
+
+use App\Http\Controllers\Controller;
+
+use App\Unit;
+
+
 
 class UnitController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,8 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        $units = Unit::orderBy('id', 'ASC')->paginate();
+        return view('admin.units.index', compact('units'));
     }
 
     /**
@@ -24,7 +35,7 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.units.create');
     }
 
     /**
@@ -33,9 +44,12 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UnitStoreRequest $request)
     {
-        //
+        $unit = Unit::create($request->all());
+
+        return redirect()->route('units.edit', $unit->id)
+            ->with('info','Unit created successfully');
     }
 
     /**
@@ -46,7 +60,9 @@ class UnitController extends Controller
      */
     public function show($id)
     {
-        //
+        $unit = Unit::find($id);
+        
+        return view ('admin.units.show', compact('unit'));
     }
 
     /**
@@ -57,7 +73,9 @@ class UnitController extends Controller
      */
     public function edit($id)
     {
-        //
+        $unit = Unit::find($id);
+        
+        return view ('admin.units.edit', compact('unit'));
     }
 
     /**
@@ -67,9 +85,14 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UnitUpdateRequest $request, $id)
     {
-        //
+        $unit = Unit::find($id);
+        
+        $unit->fill($request->all())->save();
+
+        return redirect()->route('units.edit', $unit->id)
+            ->with('info','Unit successfully updated');
     }
 
     /**
@@ -80,6 +103,8 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $unit = Unit::find($id)->delete();
+
+        return back()->with('info', 'Properly removed');
     }
 }
