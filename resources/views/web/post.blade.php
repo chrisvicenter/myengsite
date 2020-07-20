@@ -28,15 +28,23 @@
     <?php
     $grp  = $_GET['grpname'];
     $grpsl = $_GET['grpslug'];
+    $unt = $_GET['untname'];
+    $untsl = $_GET['untslug']
     ?>
     @section("container")
     <!--Breadcrumb página Groups-->
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/allgroup">Groups</a></li>
-            <li class="breadcrumb-item" aria-current="#"><a href="{{route('group',$grpsl)}}?grpname={{$grp}}&grpslug={{ $grpsl}}">
+            <li class="breadcrumb-item"><a href="../home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/allgroup">
                     <?php
                     echo $grp;
+                    ?></a></li>
+            <li class="breadcrumb-item"><a href="/allunit?grpname={{$grp}}&grpslug={{$grpsl}}">Units</a></li>
+            <li class="breadcrumb-item active" aria-current="#">
+                <a href="{{route('filtro',[$grpsl, $unit=$untsl ])}}?grpname={{$grp}}&grpslug={{$grpsl}}&untname={{$unt}}&untslug={{$untsl}}">
+                    <?php
+                    echo $unt;
                     ?>
                 </a></li>
             <li class="breadcrumb-item active" aria-current="#">{{$post->name}}</li>
@@ -55,9 +63,19 @@
 
 
                     @if($post->file)
-                    <img src="{{ $post->file }}" class="card-img-top">
+                    <div class="carousel-inner">
+                        <div style="height: 425px; ">
+                            <div>
+                                <img src="{{ $post->file }}" class="card-img-top" style="width: 100%; height: 100%;">
+                            </div>
+                        </div>
+                    </div>
                     @endif
-
+                    @if($post->fileall)
+                        <a href="{{ $post->fileall }}" class="btn btn-info" target="_blank">
+                           Descargar
+                        </a>
+                    @endif
                     <p class="card-text">
                         {{ $post->excerpt }}
                     </p>
