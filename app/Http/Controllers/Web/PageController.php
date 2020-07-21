@@ -40,19 +40,19 @@ class PageController extends Controller
         })->orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(3);
         return view('web.posts', compact('posts'));
     }
-
+    //Se buscan los grupos
     public function allgroup()
     {
         $allgroup = Group::orderBy('id')->paginate(5);
         return view('web.allgroup', compact('allgroup'));
     }
-
+    //Se buscan las unidades 
     public function allunit()
     {
         $allunit = Unit::orderBy('id')->paginate(3);
         return view('web.allunit', compact('allunit'));;
     }
-
+    //Se filtran los posts deacuerdo al grupo y la unidad 
     public function filtro($grpsl, $slug)
     {
         $unit = Unit::where('slug', $slug)->pluck('id')->first();
