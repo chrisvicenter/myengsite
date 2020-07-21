@@ -58,12 +58,17 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
+        $ruta=null;
+        if($request->file('lbr_imagen'))
+        {
+            $image= $request->file('lbr_imagen');
+            // $filename = $request->name.'.'.$image->getClientOriginalExtension();
+             //$foto=Image::make($image)->resize(720,480)->save(Storage::disk('public')->put('images/libros', $image ));
 
+             $path= Storage::disk('public')->put('images/libros',  $image);
+             $ruta=asset($path);
+        }
 
-        $image= $request->file('lbr_imagen');
-       // $filename = $request->name.'.'.$image->getClientOriginalExtension();
-        //$foto=Image::make($image)->resize(720,480)->save(Storage::disk('public')->put('images/libros', $image ));
-        $path= Storage::disk('public')->put('images/libros',  $image);
        //capturamos el nombre del autor
        //y luego buscamos su id
         $Autor=$request->id_A;
@@ -82,7 +87,7 @@ class LibroController extends Controller
         }
         $Libro= new Libro();
         $Libro->lbr_titulo=strtoupper($request->name);
-        $Libro->lbr_imagen=asset($path);
+        $Libro->lbr_imagen=$ruta;
         $Libro->lbr_slug=Str::slug($request->name);
         $Libro->lbr_body=$request->body;
         $Libro->id_C=$request->id_C+1;
