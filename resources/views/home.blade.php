@@ -54,6 +54,7 @@
             <img src="images/fantasy-2945514_1920.jpg" alt="Tercer slide" class="imgtmncrsl">
         </div>
     </div>
+
     <!--Texto del carousel-->
     <div class="captionCrl d-none d-md-block d-flex" href="#carouselControls">
         <div class="container">
@@ -64,8 +65,8 @@
                 Curabitur non tempor lorem, eget maximus nulla. Mauris venenatis ante non laoreet consequat.
             </p>
         </div>
-
     </div>
+
     <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Anterior</span>
@@ -75,11 +76,12 @@
         <span class="sr-only">Siguiente</span>
     </a>
 
-
 </div>
 <!--fin del carousel-->
+
 <hr>
 <h3 class="titlemost text-center"><em>Most Outstanding</em></h3>
+<!--cuentos mas destacados-->
 <div class="d-flex flex-wrap ">
     <div class="carousel-inner">
         <div class="row imgdisn">

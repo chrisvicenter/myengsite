@@ -76,6 +76,8 @@
                     <a href="#" class="footer-end-link">Home </a>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <a href="#" class="footer-end-link">Contacto</a>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="/loginteacher" class="footer-end-link">Login</a>
                 </div>
             </div>
         </div>
