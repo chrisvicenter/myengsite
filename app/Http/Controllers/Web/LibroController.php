@@ -58,7 +58,8 @@ class LibroController extends Controller
     {
         $image= $request->file('lbr_imagen');
         $filename = $request->name.'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(720,480)->save(\public_path('images/libros/'.$filename));
+        $foto=Image::make($image)->resize(720,480);//->save(\public_path('images/libros/'.$filename));
+       // $path= Storage::disk('public')->put('libros',  $foto);
        //capturamos el nombre del autor
        //y luego buscamos su id
         $Autor=$request->id_A;
