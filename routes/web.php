@@ -34,6 +34,7 @@ Route::get('/group/{slug}', 'Web\PageController@group')->name('group');
 
 Auth::routes();
 
+//Ruta de login para el Administrador
 Route::get('/loginteacher', function(){
     return view('admin.loginteacher');
 });
@@ -55,6 +56,7 @@ Route::get('/vclass/{slug}', 'Web\PageController@post')->name('post');
 
 Route::get('/unit/{slug}', 'Web\PageController@unit')->name('unit');
 
+//Ruta para los grupos
 Route::get('/allgroup', 'Web\PageController@allgroup')->name('allgroup');
 
 
@@ -67,8 +69,10 @@ Route::get('/Prueba/{idlike}/{like}', 'Web\LibroController@like')->name('like');
 Route::patch('/Prueba/{idsmile}/{smile}', 'Web\LibroController@smile')->name('smile');
 Route::put('/Prueba/{idsorpess}/{sorpess}', 'Web\LibroController@sorpess')->name('sorpess');
 
-Route::get('/allunit', 'Web\PageController@allunit')->name('allunit');
 
+//Ruta para las unidades
+Route::get('/allunit', 'Web\PageController@allunit')->name('allunit');
+//Ruta para los posts de los grupos deacuerdo a la unidad 
 Route::get('/allgroup/{grpsl}/{slug}', 'Web\PageController@filtro')->name('filtro');
 
 
