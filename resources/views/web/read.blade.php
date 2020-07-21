@@ -48,18 +48,21 @@
 <br>
 
 
-<div class="d-flex flex-wrap flex-row">
-    @foreach($libros as $thumbnail)
-    <div class="card-contenido flex-column justify-content-between ml-2 color shadow" style="width: 18rem;">
-        <img class="card-img-top" src="/images/libros/{{$thumbnail->lbr_imagen}}">
-        <div class="card-body">
-            <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
-            <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">A leerlo!</a>
-        </div>
-    </div>
-    @endforeach
-
-</div>
+        <div class="d-flex flex-wrap flex-row">
+            @foreach($libros as $thumbnail)
+                <div class="card card-contenido justify-content-between d-flex shadow">
+                    <img class="Card_ima_thum" src="{{$thumbnail->lbr_imagen}}">
+                    <div class="card-body">
+                    <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
+                    <h6 class="card-title">{{$thumbnail->id_A}}</h6>
+                    <i name="like" class="oi oi-thumb-up reactionlbr btn btn-primary">
+                    {{$thumbnail->lbr_like}}
+                    </i><br>
+                    <i><a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">A leerlo!</a></i>
+                    </div>
+                </div>
+            @endforeach
+       </div>
 
 <br>
 {{$libros}}

@@ -90,7 +90,7 @@
 
                                 </div>
                             </div>
-                                <img class="imagelibro shadow" src="/images/libros/{{$thumbnail->lbr_imagen}}">
+                                <img class="imagelibro shadow" src="{{$thumbnail->lbr_imagen}}">
                             </div>
                         @endforeach
 

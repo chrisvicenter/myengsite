@@ -9,6 +9,8 @@ use App\Autor;
 use Image;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use Intervention\Image\Exception\NotReadableException;
 use Intervention\Image\ImageServiceProvider;
 use Illuminate\Support\Str;
@@ -56,9 +58,12 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $image= $request->file('lbr_imagen');
-        $filename = $request->name.'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(720,480)->save(\public_path('images/libros/'.$filename));
+       // $filename = $request->name.'.'.$image->getClientOriginalExtension();
+        //$foto=Image::make($image)->resize(720,480)->save(Storage::disk('public')->put('images/libros', $image ));
+        $path= Storage::disk('public')->put('images/libros',  $image);
        //capturamos el nombre del autor
        //y luego buscamos su id
         $Autor=$request->id_A;
@@ -77,7 +82,7 @@ class LibroController extends Controller
         }
         $Libro= new Libro();
         $Libro->lbr_titulo=strtoupper($request->name);
-        $Libro->lbr_imagen=$filename;
+        $Libro->lbr_imagen=asset($path);
         $Libro->lbr_slug=Str::slug($request->name);
         $Libro->lbr_body=$request->body;
         $Libro->id_C=$request->id_C+1;
