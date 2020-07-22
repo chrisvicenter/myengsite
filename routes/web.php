@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::get('/home', function(){
-    return view('home');
-});
+Route::get('/home', 'HomeController@index');
 
 Route::get('/Prueba', function(){
     return view('Prueba');
@@ -72,7 +70,7 @@ Route::put('/Prueba/{idsorpess}/{sorpess}', 'Web\LibroController@sorpess')->name
 
 //Ruta para las unidades
 Route::get('/allunit', 'Web\PageController@allunit')->name('allunit');
-//Ruta para los posts de los grupos deacuerdo a la unidad 
+//Ruta para los posts de los grupos deacuerdo a la unidad
 Route::get('/allgroup/{grpsl}/{slug}', 'Web\PageController@filtro')->name('filtro');
 
 

@@ -2,6 +2,7 @@
 
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/read_and_write.css') }}">
+<link rel="stylesheet" href="css/home.css">
 <title>Read</title>
 @endsection
 
@@ -29,7 +30,7 @@
 <!--Breadcrumb página Groups-->
 <nav aria-label="breadcrumb " class="rowtop">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="/home">Home</a><a href="/read">/ Read</a></li>
+        <li class="breadcrumb-item active"><a href="/read">Read</a></li>
     </ol>
 </nav>
 <br>
@@ -37,33 +38,36 @@
 <!--search-->
 <nav class="navbar-light float-right">
     <form class="form-inline">
-        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por título"
+        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Search by title"
             aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>
-
-<a href="{{url('/write/create')}}" class="btn btn-primary pull-right" role="button">Agregar</a>
+<!--agregar-->
+<a href="{{url('/write/create')}}" class="btn btn-primary pull-right" role="button">Add</a>
 <br>
 <br>
 
+<!--cards-->
 
-        <div class="d-flex flex-wrap flex-row">
-            @foreach($libros as $thumbnail)
-                <div class="card card-contenido justify-content-between d-flex shadow">
-                    <img class="Card_ima_thum" src="{{$thumbnail->lbr_imagen}}">
-                    <div class="card-body">
-                    <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
-                    <h6 class="card-title">{{$thumbnail->id_A}}</h6>
-                    <i name="like" class="oi oi-thumb-up reactionlbr btn btn-primary">
-                    {{$thumbnail->lbr_like}}
-                    </i><br>
-                    <i><a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">A leerlo!</a></i>
-                    </div>
-                </div>
-            @endforeach
-       </div>
+<div class="card-deck mt-5">
+    @foreach($libros as $thumbnail)
+        <div class="card">
+            <div class="tmncont">
+                <img src="{{$thumbnail->lbr_imagen}}" class="imgtmn rounded">
 
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
+                <h6 class="card-title">Autor: {{$thumbnail->aut_nombre}}</h6>
+            </div>
+            <div class="card-footer">
+                <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
+                <small class="oi oi-thumb-up reactionlbr btn btn-primary mt-1">{{$thumbnail->lbr_like}}</small>
+            </div>
+        </div>
+    @endforeach
+</div>
 <br>
 {{$libros}}
 @endsection
