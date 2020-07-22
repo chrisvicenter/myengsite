@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Web;
-
+use App\Http\Requests\LibroStoreRequest;
 use App\Http\Controllers\Controller;
 use App\Libro;
 use App\Curso;
@@ -25,17 +25,22 @@ class LibroController extends Controller
      */
     public function index(Request $request)
     {
+
+        //$autnom=Libro::all();
         //Si exite una petición buscamos por el campo "buscar"
         //y lo mandamos a la vista 'IMAGENES'
         if($request)
         {
             $titulo=strtoupper($request->get('buscarpor'));
 
-            $imagenlibro['libros']=Libro::where('lbr_titulo', 'LIKE', "%$titulo%")->orderby('id', 'asc')
-            ->paginate(5);
+            $libros=Libro::join('autors', 'libros.id_A', '=', 'autors.id')->select('aut_nombre', 'lbr_titulo',
+            'lbr_like', 'lbr_imagen', 'lbr_slug')->where('lbr_titulo', 'LIKE', "%$titulo%")->orderby('libros.id', 'desc')
+            ->paginate(4);
+
 
         }
-        return view('web.read', $imagenlibro);
+
+        return view('web.read',\compact("libros"));
     }
 
     /**
@@ -58,7 +63,7 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        $ruta=null;
+
         if($request->file('lbr_imagen'))
         {
             $image= $request->file('lbr_imagen');

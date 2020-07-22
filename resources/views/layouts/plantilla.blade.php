@@ -10,7 +10,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/plantila.css') }}">
     <link rel="stylesheet" href="{{ asset('font/css/open-iconic-bootstrap.min.css') }}">
-    
+
     <!-- Fuentes-->
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
@@ -24,22 +24,22 @@
 <body>
     <!--Jumbotron-->
     <div>
-        <div class="jumbotron ">        
+        <div class="jumbotron ">
             <div class="container">
                 <img src="{{ asset('images/ninosPNG.png')}}" class="img-fluid imgjupng float-left" alt="Responsive image">
                 <img src="{{ asset('images/myengsite.png')}}" class="img-fluid imgjupngti " alt="Responsive image">
             </div>
-        </div> 
+        </div>
     </div>
     <!--Fin Jumbotron-->
-          
-    @yield("navigation") 
-     
-    <div class="container colorcntner shadow">  
 
-        @yield('content') 
-    
-        <!--Primer Footer-->     
+    @yield("navigation")
+
+    <div class="container colorcntner shadow">
+
+        @yield('content')
+
+        <!--Primer Footer-->
         <div class="foot">
             <div class="row">
                 <div class="col-sm-4 d-flex flex-column align-items-start ">
@@ -62,11 +62,11 @@
                 </div>
             </div>
         </div>
-        <!--Fin Primer footer-->        
+        <!--Fin Primer footer-->
     </div>
 
     <!--Footer de la página-->
-    <footer>        
+    <footer>
         <div class="container">
             <div class="row d-flex align-items-center">
                 <div class="col">
@@ -82,8 +82,8 @@
             </div>
         </div>
     </footer>
-    <!--Fin Footer de lapágina--> 
-    
+    <!--Fin Footer de lapágina-->
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('jquery/dist/jquery.min.js')}}"></script>

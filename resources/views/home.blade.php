@@ -82,52 +82,22 @@
 <hr>
 <h3 class="titlemost text-center"><em>Most Outstanding</em></h3>
 <!--cuentos mas destacados-->
-<div class="d-flex flex-wrap ">
-    <div class="carousel-inner">
-        <div class="row imgdisn">
-            <div class="col-sm-6  d-flex flex-column tmncont ">
-                <div class="text-center">
-                    <img src="images/imgdrg.jpg" class="imgtmn rounded">
-                </div>
-                <div class="caption d-none d-md-block d-flex ">
-                    <h5 class="ml-2 colorcont sizetlt">Lorem ipsum</h5>
-                    <p class="ml-2 colorcont sizecont">Lorem ipsum dolor sit amet, consectetur</p>
-                </div>
+<div class="d-flex flex-wrap">
+    @foreach($libros1 as $thumbnail)
+        <div class="card col-sm-6 mt-3 imgdisn">
+            <div class="tmncont">
+                <img src="{{$thumbnail->lbr_imagen}}" class="imgtmn rounded">
             </div>
-            <div class="col-sm-6  d-flex flex-column tmncont ">
-                <div class="text-center">
-                    <img src="images/book-4133883_1280.jpg" class="imgtmn rounded">
-                </div>
-                <div class="caption d-none d-md-block d-flex ">
-                    <h5 class="ml-2 colorcont sizetlt">Lorem ipsum</h5>
-                    <p class="ml-2 colorcont sizecont">Lorem ipsum dolor sit amet, consectetur</p>
-                </div>
+            <div class="card-body">
+                <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
+                <h6 class="card-title">Autor: {{$thumbnail->aut_nombre}}</h6>
+            </div>
+            <div class="card-footer">
+                <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
+                <small class="oi oi-thumb-up reactionlbr btn btn-primary mt-1">{{$thumbnail->lbr_like}}</small>
             </div>
         </div>
-    </div>
-    <div class="carousel-inner rowtop">
-        <div class="row imgdisn ">
-            <div class="col-sm-6  d-flex flex-column tmncont">
-                <div class="text-center ">
-                    <img src="images/imgvndo.jpg" class="imgtmn rounded">
-                </div>
-                <div class="caption d-none d-md-block d-flex ">
-                    <h5 class="ml-2 colorcont sizetlt">Lorem ipsum</h5>
-                    <p class="ml-2 colorcont sizecont">Lorem ipsum dolor sit amet, consectetur</p>
-                </div>
-
-            </div>
-            <div class="col-sm-6  d-flex flex-column tmncont ">
-                <div class="text-center">
-                    <img src="images/imgastrn.jpg" class="imgtmn rounded">
-                </div>
-                <div class="caption d-none d-md-block d-flex ">
-                    <h5 class="ml-2 colorcont sizetlt">Lorem ipsum</h5>
-                    <p class="ml-2 colorcont sizecont">Lorem ipsum dolor sit amet, consectetur</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 <hr>
 @endsection

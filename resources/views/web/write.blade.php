@@ -1,9 +1,36 @@
 @extends("layouts.plantilla")
+
+@section('head')
+<link rel="stylesheet" href="{{ asset('css/read_and_write.css') }}">
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<title>Read</title>
+@endsection
+
+@section("navigation")
+<!--Menú de la página-->
+<nav class="navbar navbar-expand-md navbar-dark">
+    <div class="container ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item "><a class="nav-link" href="/home">Home</a></li>
+                <li class="nav-item"><a class=" nav-link " href="/allgroup">Groups</a></li>
+                <li class="nav-item"><a class="nav-link " href="/read">Read</a></li>
+                <li class="nav-item active"><a class="nav-link " href="# ">Write</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+@endsection
 @section('content')
 <!--Breadcrumb página Groups-->
 <nav aria-label="breadcrumb " class="rowtop">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="/home">Home</a><a href="/read">/ Read</a></li>
+        <li class="breadcrumb-item active"><a href="/write/create">Write</a></li>
+
     </ol>
 </nav>
 <br>
@@ -18,38 +45,38 @@
 
 
                 <div class="form-group">
-                    {!! form::label('id_C', 'Elige tu Curso: ')!!}
+                    {!! form::label('id_C', 'Choose your group: ')!!}
                     {!! form:: select('id_C', $cursos, ['class'=> 'form-control'])!!}
 
                 </div>
 
                 <div class="form-group">
-                    {!! form::label('id_A', 'Escribe tu nombre: ')!!}
+                    {!! form::label('id_A', 'Your name: ')!!}
                     {!! form:: text('id_A', null, ['class'=> 'form-control'])!!}
 
                 </div>
 
 
                 <div class="form-group form-float">
-                    {!! form::label('lbr_titulo', 'Titulo')!!}
+                    {!! form::label('lbr_titulo', 'Title')!!}
                     {!! form:: text('name', null, ['class'=> 'form-control'])!!}
 
                 </div>
 
                 <div class="form-group form-float">
-                    {!! form::label('lbr_body', 'Escribe tu cuento')!!}
+                    {!! form::label('lbr_body', 'Write your story: ')!!}
                     {!! form:: textarea('body', null, ['class'=> 'form-control'])!!}
 
                 </div>
 
                 <div class="form-group">
-                    {!! form::label('lbr_imagen', 'Selecciona una Imagen: ')!!}
+                    {!! form::label('lbr_imagen', 'Choose a image: ')!!}
                     {!! form:: file('lbr_imagen', null, ['class'=> 'form-control'])!!}
 
                 </div>
 
                 <button type="submit" class="btn btn-success">
-                   Publicar mi cuento!
+                   Publish my story!
                 </button>
 
                 {!! Form::close() !!}
@@ -63,7 +90,7 @@
 
 
 <br>
-<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
 <script>
     CKEDITOR.config.height = 400;
     CKEDITOR.config.width = 'auto';
