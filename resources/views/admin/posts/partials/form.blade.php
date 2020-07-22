@@ -35,6 +35,10 @@
     {{ Form::textarea('excerpt', null, ['class' => 'form-control', 'rows' => '2']) }}
 </div>
 <div class="form-group">
+    {{ Form::label('youtube', 'YouTube Link:') }}
+    {{ Form::text('youtube', null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
     {{ Form::label('body', 'Description') }}
     {{ Form::textarea('body', null, ['class' => 'form-control']) }}
 </div>
