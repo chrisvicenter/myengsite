@@ -9,14 +9,14 @@ class Libro extends Model
     protected $table= 'libros';
 
     protected $fillable=['id','lbr_titulo',
-     'lbr_imagen', 'lbr_slug', 'id_A', 'lbr_body'];
+     'lbr_imagen', 'lbr_slug', 'id_A', 'lbr_body', 'id_G'];
 
      public function autor()
      {
          return $this->belongTo('App\Autor', 'id_A');
      }
-     public function curso()
+     public function grupo()
      {
-         return $this->belongTo('App\Curso', 'id_C');
+         return $this->belongTo('App\Group', 'id_G');
      }
 }

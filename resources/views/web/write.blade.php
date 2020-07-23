@@ -45,9 +45,8 @@
 
 
                 <div class="form-group">
-                    {!! form::label('id_C', 'Choose your group: ')!!}
-                    {!! form:: select('id_C', $cursos, ['class'=> 'form-control'])!!}
-
+                    {{ Form::label('id_G', 'groups') }}
+                    {{ Form::select('group_id', $groups, null, ['class' => 'form-control']) }}
                 </div>
 
                 <div class="form-group">
