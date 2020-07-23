@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Requests\LibroStoreRequest;
 use App\Http\Controllers\Controller;
 use App\Libro;
-use App\Curso;
+use App\Group;
 use App\Autor;
 use Image;
 
@@ -50,9 +50,10 @@ class LibroController extends Controller
      */
     public function create()
     {
-        $cursos=Curso::orderBy('id', 'ASC')->pluck('id');
 
-        return view('web.write', \compact('cursos'));
+        $groups = Group::orderBy('name', 'ASC')->pluck('name', 'id');
+
+        return view('web.write', \compact('groups'));
     }
 
     /**
@@ -63,7 +64,8 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-
+        //grou= el id del grupo (se pasa a id_G en el campo de libros)
+        $grou=$request->group_id;
         if($request->file('lbr_imagen'))
         {
             $image= $request->file('lbr_imagen');
@@ -95,7 +97,7 @@ class LibroController extends Controller
         $Libro->lbr_imagen=$ruta;
         $Libro->lbr_slug=Str::slug($request->name);
         $Libro->lbr_body=$request->body;
-        $Libro->id_C=$request->id_C+1;
+        $Libro->id_G=$grou;
         $Libro->id_A=$id_A;
         $Libro->save();
         return redirect()->route('write.index');

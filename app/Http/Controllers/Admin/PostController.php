@@ -42,7 +42,6 @@ class PostController extends Controller
     {
         $units = Unit::orderBy('name', 'ASC')->pluck('name', 'id');
         $groups = Group::orderBy('name', 'ASC')->get();
-
         return view('admin.posts.create', compact('units', 'groups'));
     }
 
@@ -54,25 +53,25 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-        
+
         $post = Post::create($request->all());
-        
-        //IMAGE 
+
+        //IMAGE
         if($request->file('image')){
             $path = Storage::disk('public')->put('image',  $request->file('image'));
             $post->fill(['file' => asset($path)])->save();
-        }        
+        }
 
         //FILEALL
         if($request->file('filex')){
             $path = Storage::disk('public')->put('filealls',  $request->file('filex'));
             $post->fill(['fileall' => asset($path)])->save();
         }
-        
+
         //GROUPS
         $post->groups()->attach($request->get('groups'));
 
-        
+
         return redirect()->route('posts.edit', $post->id)->with('info', 'Post created successfully');
     }
 
@@ -86,7 +85,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $this->authorize('pass',$post);
-        
+
         return view ('admin.posts.show', compact('post'));
     }
 
@@ -121,7 +120,7 @@ class PostController extends Controller
 
         $post->fill($request->all())->save();
 
-        //IMAGE 
+        //IMAGE
         if($request->file('image')){
             $path = Storage::disk('public')->put('image',  $request->file('image'));
             $post->fill(['file' => asset($path)])->save();
@@ -132,7 +131,7 @@ class PostController extends Controller
             $path = Storage::disk('public')->put('filealls',  $request->file('filex'));
             $post->fill(['fileall' => asset($path)])->save();
         }
-        
+
 
         //GROUPS
         $post->groups()->sync($request->get('groups'));
@@ -148,9 +147,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id); 
+        $post = Post::find($id);
         $this->authorize('pass',$post);
-        
+
         $post->delete();
 
         return back()->with('info', 'Properly removed');

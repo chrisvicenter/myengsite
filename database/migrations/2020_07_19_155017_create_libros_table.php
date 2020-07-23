@@ -23,15 +23,15 @@ class CreateLibrosTable extends Migration
             $table->integer('lbr_sorpess')->default(0);
             $table->string('lbr_imagen');
             $table->foreignId('id_A');
-            $table->foreignId('id_C');
+            $table->foreignId('id_G');
             $table->timestamps();
 
             $table->foreign('id_A')
             ->references('id')->on('autors')
             ->onDelete('cascade');
 
-            $table->foreign('id_C')
-            ->references('id')->on('cursos')
+            $table->foreign('id_G')
+            ->references('id')->on('groups')
             ->onDelete('cascade');
         });
     }
