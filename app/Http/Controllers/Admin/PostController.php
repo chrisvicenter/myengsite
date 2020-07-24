@@ -14,6 +14,8 @@ use App\Post;
 use App\Unit;
 use App\Group;
 
+use JD\Cloudder\Facades\Cloudder;
+
 
 class PostController extends Controller
 {
@@ -66,20 +68,32 @@ class PostController extends Controller
         $post = Post::create($request->all());
 
         //IMAGE
-        if($request->file('image')){
-            $path = Storage::disk('public')->put('image',  $request->file('image'));
-            $post->fill(['file' => asset($path)])->save();
+        if($request->file('image')){      
+            $image = $request->file('image')->getRealPath();
+     
+            Cloudder::upload($image, null);
+
+            list($width, $height) = getimagesize($image);
+
+            $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+
+            $post->fill(['file' => $image_url])->save();
+            
         }
 
         //FILEALL
-        if($request->file('filex')){
-            $path = Storage::disk('public')->put('filealls',  $request->file('filex'));
-            $post->fill(['fileall' => asset($path)])->save();
+        if($request->file('filex')){            
+            
+            $filee = $request->file('filex')->getRealPath();     
+            Cloudder::upload($filee,null, array("resource_type" => "raw"));
+
+            //$filee_url= Cloudder::show(Cloudder::getPublicId());
+            
+            //$post->fill(['fileall' => $filee_url])->save();
         }
 
         //GROUPS
         $post->groups()->attach($request->get('groups'));
-
 
         return redirect()->route('posts.edit', $post->id)->with('info', 'Post created successfully');
     }
@@ -131,8 +145,15 @@ class PostController extends Controller
 
         //IMAGE
         if($request->file('image')){
-            $path = Storage::disk('public')->put('image',  $request->file('image'));
-            $post->fill(['file' => asset($path)])->save();
+            $image = $request->file('image')->getRealPath();
+     
+            Cloudder::upload($image, null);
+
+            list($width, $height) = getimagesize($image);
+
+            $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+
+            $post->fill(['file' => $image_url])->save();
         }
 
         //FILEALL
