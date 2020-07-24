@@ -70,7 +70,7 @@
                             <a class="nav-link" href="{{route('units.index')}}">
                                 Units
                             </a>
-                        </li>                      
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -107,7 +107,7 @@
         </div>
     @endif
 
-    @if(count($errors))            
+    @if(count($errors))
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
