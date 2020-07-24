@@ -145,8 +145,15 @@ class PostController extends Controller
 
         //IMAGE
         if($request->file('image')){
-            $path = Storage::disk('public')->put('image',  $request->file('image'));
-            $post->fill(['file' => asset($path)])->save();
+            $image = $request->file('image')->getRealPath();
+     
+            Cloudder::upload($image, null);
+
+            list($width, $height) = getimagesize($image);
+
+            $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+
+            $post->fill(['file' => $image_url])->save();
         }
 
         //FILEALL
