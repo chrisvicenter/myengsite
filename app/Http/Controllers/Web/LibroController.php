@@ -62,10 +62,15 @@ class LibroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LibroStoreRequest $request)
     {
+
+
         //grou= el id del grupo (se pasa a id_G en el campo de libros)
         $grou=$request->group_id;
+        //iniciamos la ruta de la imagen
+        $ruta=null;
+        //si existe imagen--->
         if($request->file('lbr_imagen'))
         {
             $image= $request->file('lbr_imagen');
