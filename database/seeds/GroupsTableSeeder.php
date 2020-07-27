@@ -16,6 +16,7 @@ class UnitsTableSeeder extends Seeder
             'slug' => 'group-a'
         ]);
 
+        /*
         App\Group::create([
             'name' => 'Group B',
             'slug' => 'group-b'
@@ -35,5 +36,6 @@ class UnitsTableSeeder extends Seeder
             'name' => 'Group E',
             'slug' => 'group-e'
         ]);
+        */
     }
 }
