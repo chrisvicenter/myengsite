@@ -9,7 +9,10 @@ class Libro extends Model
     protected $table= 'libros';
 
     protected $fillable=['id','lbr_titulo',
-     'lbr_imagen', 'lbr_slug', 'id_A', 'lbr_body', 'id_G'];
+     'lbr_imagen', 'lbr_slug', 'id_A', 'lbr_body', 'id_G',
+    'lbr_youtube', 'youtubebody', 'lbr_soundcloud',
+
+    ];
 
      public function autor()
      {
