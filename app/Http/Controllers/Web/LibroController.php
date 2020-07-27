@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Exception\NotReadableException;
 use Intervention\Image\ImageServiceProvider;
 use Illuminate\Support\Str;
+use JD\Cloudder\Facades\Cloudder;
 
 
 class LibroController extends Controller
@@ -34,7 +35,7 @@ class LibroController extends Controller
             $titulo=strtoupper($request->get('buscarpor'));
 
             $libros=Libro::join('autors', 'libros.id_A', '=', 'autors.id')->select('aut_nombre', 'lbr_titulo',
-            'lbr_like', 'lbr_imagen', 'lbr_slug')->where('lbr_titulo', 'LIKE', "%$titulo%")->orderby('libros.id', 'desc')
+            'lbr_like', 'lbr_imagen', 'lbr_slug', 'youtubebody')->where('lbr_titulo', 'LIKE', "%$titulo%")->orderby('libros.id', 'desc')
             ->paginate(4);
 
 
@@ -68,42 +69,64 @@ class LibroController extends Controller
 
         //grou= el id del grupo (se pasa a id_G en el campo de libros)
         $grou=$request->group_id;
+        /////////////////
         //iniciamos la ruta de la imagen
         $ruta=null;
         //si existe imagen--->
         if($request->file('lbr_imagen'))
         {
-            $image= $request->file('lbr_imagen');
-            // $filename = $request->name.'.'.$image->getClientOriginalExtension();
-             //$foto=Image::make($image)->resize(720,480)->save(Storage::disk('public')->put('images/libros', $image ));
+             $image = $request->file('lbr_imagen')->getRealPath();
 
-             $path= Storage::disk('public')->put('images/libros',  $image);
-             $ruta=asset($path);
+             Cloudder::upload($image, null, array("folder"=>"storys_images"));
+
+             list($width, $height) = getimagesize($image);
+
+             $ruta= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
         }
+        else //caso contrario
+        {
+            $ruta='https://res.cloudinary.com/hoefoxwrd/image/upload/v1595626678/storys_images/logofinalJPG_nglrxm.jpg';
+        }
+        ///////////////
+        //////////////
+        //si existe url en youtube
+        if(!($request['lbr_youtube']=='')){
+            $request['youtubebody']=$request['youtubebody'].
+                '<div class="embed-responsive embed-responsive-21by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/'.
+                    substr($request['lbr_youtube'], 32, 43).
+                '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+                </div>';
+        }
+       //guardamos el body de youtube
+        $youtube=$request['youtubebody'];
+        //////////////
 
        //capturamos el nombre del autor
        //y luego buscamos su id
-        $Autor=$request->id_A;
+        $Autor=$request->student;
         $id_A=null;
         if($Autor !=null)
         {
+            //creamos un autor
             $Aut=new Autor();
             $Aut->aut_nombre=$Autor;
             $Aut->save();
             $id_A=Autor::select('id')->OrderBy('id', 'DESC')->where('aut_nombre', $Autor)->first();
             $id_A=$id_A->id;
         }
-        else
-        {
-            $id_A=1;
-        }
+
+        //guardamos los campos que traemos del request en la tabla libros
         $Libro= new Libro();
-        $Libro->lbr_titulo=strtoupper($request->name);
+        $Libro->lbr_titulo=strtoupper($request->title);
         $Libro->lbr_imagen=$ruta;
-        $Libro->lbr_slug=Str::slug($request->name);
+        $Libro->lbr_slug=Str::slug($request->title);
         $Libro->lbr_body=$request->body;
         $Libro->id_G=$grou;
         $Libro->id_A=$id_A;
+        $Libro->lbr_youtube=$request->lbr_youtube;
+        $Libro->youtubebody=$youtube;
         $Libro->save();
         return redirect()->route('write.index');
     }
@@ -117,21 +140,31 @@ class LibroController extends Controller
     public function show($slug)
     {
         $contenido = Libro::where('lbr_slug', $slug)->get();
+
+        //toammos el id del autor en el libro
         $ID_A=null;
         foreach($contenido as $cont)
         {
             $ID_A=$cont->id_A;
         }
+        //extaremos el autor del libro y lo guardamos en autnom
         $autnom= Autor::where('id', $ID_A)->pluck('aut_nombre');
         $autnom=$autnom[0];
+        //extraemos el body de la consulta
         $body= Libro::select('lbr_body')->where('lbr_slug', $slug)->get();
         $bodylbr="";
         foreach ($body as $lbody)
         {
             $bodylbr=$lbody->lbr_body;
         }
-
-        return view('web.librocontenido', compact('contenido', 'bodylbr', 'autnom') );
+        //extaremos el contenido de youtube de la consulta
+        $conyoutube=Libro::select('youtubebody')->where('lbr_slug', $slug)->get();
+        $youtube="";
+        foreach ($conyoutube as $you)
+        {
+            $youtube=$you->youtubebody;
+        }
+        return view('web.librocontenido', compact('contenido', 'bodylbr', 'autnom', 'youtube') );
     }
 
     public function like($idlike, $like)

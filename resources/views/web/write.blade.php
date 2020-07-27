@@ -66,14 +66,30 @@
 
                 <div class="form-group">
                     {!! form::label('id_A', 'Your name: ')!!}
-                    {!! form:: text('id_A', null, ['class'=> 'form-control'])!!}
+                    {!! form:: text('student', null, ['class'=> 'form-control'])!!}
 
                 </div>
 
 
                 <div class="form-group form-float">
                     {!! form::label('lbr_titulo', 'Title')!!}
-                    {!! form:: text('name', null, ['class'=> 'form-control'])!!}
+                    {!! form:: text('title', null, ['class'=> 'form-control'])!!}
+
+                </div>
+
+                <div class="form-group form-float">
+                    {!! form::label('lbr_youtube', 'Youtube url: ')!!}
+                    {!! form:: text('lbr_youtube', null, ['class'=> 'form-control'])!!}
+
+                </div>
+                <div class="form-group">
+                    {{ Form::label('youtubebody', 'Video Description') }}
+                    {{ Form::textarea('youtubebody', null, ['class' => 'form-control']) }}
+                </div>
+
+                <div class="form-group form-float">
+                    {!! form::label('lbr_soundcloud', 'Sound Cloud url: ')!!}
+                    {!! form:: text('lbr_soundcloud', null, ['class'=> 'form-control'])!!}
 
                 </div>
 

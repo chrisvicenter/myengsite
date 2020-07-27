@@ -18,11 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index');
-
-Route::get('/Prueba', function(){
-    return view('Prueba');
-});
-
 //Se generar la vista para el aula virtual
 
 
@@ -63,9 +58,9 @@ Route::resource('/read','Web\LibroController');
 Route::resource('/write','Web\LibroController');
 
 //Rutas para reacciones
-Route::get('/Prueba/{idlike}/{like}', 'Web\LibroController@like')->name('like');
-Route::patch('/Prueba/{idsmile}/{smile}', 'Web\LibroController@smile')->name('smile');
-Route::put('/Prueba/{idsorpess}/{sorpess}', 'Web\LibroController@sorpess')->name('sorpess');
+Route::get('/read/{idlike}/{like}', 'Web\LibroController@like')->name('like');
+Route::patch('/read/{idsmile}/{smile}', 'Web\LibroController@smile')->name('smile');
+Route::put('/read/{idsorpess}/{sorpess}', 'Web\LibroController@sorpess')->name('sorpess');
 
 
 //Ruta para las unidades

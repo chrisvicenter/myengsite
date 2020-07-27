@@ -24,10 +24,10 @@ class LibroStoreRequest extends FormRequest
     public function rules()
     {
        $rules = [
-            'name'    =>'required|unique:libros,lbr_titulo',
-            'id_A'          =>'required',
-            'body'      =>'required',
-            'lbr_imagen' => 'mimes:jpeg,png',
+            'title' => 'required|unique:libros,lbr_titulo',
+            'student' =>'required',
+            'body' =>'required',
+            'lbr_imagen'=> 'mimes:jpeg,bmp,jpg,png|between:1, 6000',
 
         ];
 

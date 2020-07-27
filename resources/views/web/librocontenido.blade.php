@@ -87,6 +87,9 @@
                             <div class="card-body content-lbr">
                               <p class="card-text"> {!!$bodylbr!!}</p>
                             </div>
+                            <div class="card-body content-lbr">
+                                <p class="card-text"> {!!$youtube!!}</p>
+                              </div>
                         </div>
                     @endforeach
 
