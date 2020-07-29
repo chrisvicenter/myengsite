@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Requests\LibroStoreRequest;
 use App\Http\Controllers\Controller;
 use App\Libro;
+use App\Post;
 use App\Group;
 use App\Autor;
 use Image;
@@ -51,10 +52,10 @@ class LibroController extends Controller
      */
     public function create()
     {
-
+        //llamamos a los grupos que esten disponibles para guardarlos en libros
         $groups = Group::orderBy('name', 'ASC')->pluck('name', 'id');
-
-        return view('web.write', \compact('groups'));
+        $idpost=null;
+        return view('web.write', \compact('groups', 'idpost'));
     }
 
     /**
@@ -65,8 +66,12 @@ class LibroController extends Controller
      */
     public function store(LibroStoreRequest $request)
     {
-
-
+        //iniciamos el post
+        $IDPOST=null;
+        if($request->id_P)
+        {
+            $IDPOST=$request->id_P;
+        }
         //grou= el id del grupo (se pasa a id_G en el campo de libros)
         $grou=$request->group_id;
         /////////////////
@@ -85,7 +90,7 @@ class LibroController extends Controller
         }
         else //caso contrario
         {
-            $ruta='https://res.cloudinary.com/hoefoxwrd/image/upload/v1595626678/storys_images/logofinalJPG_nglrxm.jpg';
+            $ruta='https://res.cloudinary.com/hoefoxwrd/image/upload/v1595882294/storys_images/logofinalJPG_sdusmn.jpg';
         }
         ///////////////
         //////////////
@@ -127,6 +132,7 @@ class LibroController extends Controller
         $Libro->id_A=$id_A;
         $Libro->lbr_youtube=$request->lbr_youtube;
         $Libro->youtubebody=$youtube;
+        $Libro->id_P=$IDPOST;
         $Libro->save();
         return redirect()->route('write.index');
     }
@@ -208,6 +214,13 @@ class LibroController extends Controller
 
 
 
+    }
+
+    public function libropost($idpost, $namepost){
+       //llamamos a los grupos que esten disponibles para guardarlos en libros
+        $groups = Group::orderBy('name', 'ASC')->pluck('name', 'id');
+
+        return view('web.write', \compact('groups', 'idpost', 'namepost'));
     }
 
 }

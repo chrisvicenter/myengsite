@@ -10,7 +10,7 @@ class Libro extends Model
 
     protected $fillable=['id','lbr_titulo',
      'lbr_imagen', 'lbr_slug', 'id_A', 'lbr_body', 'id_G',
-    'lbr_youtube', 'youtubebody', 'lbr_soundcloud',
+    'lbr_youtube', 'youtubebody', 'lbr_soundcloud', 'id_P'
 
     ];
 
@@ -21,5 +21,10 @@ class Libro extends Model
      public function grupo()
      {
          return $this->belongTo('App\Group', 'id_G');
+     }
+
+     public function post(){
+        return $this->belongTo('App\Post', 'id_P');
+
      }
 }

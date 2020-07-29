@@ -8,6 +8,7 @@ $untsl = $_GET['untslug']
 
 @section("head")
 <title>{{$post->name}}</title>
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 @endsection
 
@@ -68,7 +69,7 @@ $untsl = $_GET['untslug']
 
                 {!! $post->body !!}
             </p>
-            
+
             @if($post->fileall)
             <a href="{{ $post->fileall }}" class="btn btn-info" target="_blank">
                 Download
@@ -78,5 +79,31 @@ $untsl = $_GET['untslug']
     </div>
 </div>
 <hr>
+<div class="titlemost text-center">
+    <h1>Books</h1>
+</div>
+<div class="card-deck mt-5">
+    @foreach($libros as $thumbnail)
+        <div class="card">
+            <div class="tmncont">
+                <img src="{{$thumbnail->lbr_imagen}}" class="imgtmn rounded">
+
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
+                <h6 class="card-title">Autor: {{$thumbnail->aut_nombre}}</h6>
+            </div>
+            <div class="card-footer">
+                <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
+                <i class="oi oi-thumb-up reactionlbr mt-2">{{$thumbnail->lbr_like}}</i>
+            </div>
+        </div>
+    @endforeach
+</div>
+<br>
+<a href="{{ route('createlibropost', [$post->id, $post->name]) }}" class="btn btn-primary pull-right" role="button">Add</a>
+<br>
+<br>
+{{$libros->withQueryString()}}
 <!--Footer de la página-->
 @endsection

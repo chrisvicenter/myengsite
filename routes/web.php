@@ -68,4 +68,6 @@ Route::get('/allunit', 'Web\PageController@allunit')->name('allunit');
 //Ruta para los posts de los grupos deacuerdo a la unidad
 Route::get('/allgroup/{grpsl}/{slug}', 'Web\PageController@filtro')->name('filtro');
 
+//Ruta para la creación de un libro desde un post
+Route::get('write/create/{idpost}/{namepost}', 'Web\LibroController@libropost' )->name('createlibropost');
 

@@ -63,7 +63,7 @@
             </div>
             <div class="card-footer">
                 <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
-                <i class="oi oi-thumb-up reactionlbr mt-2">{{$thumbnail->lbr_like}}</i>
+                <i class="oi oi-thumb-up reactionlbr text-primary mt-2">{{$thumbnail->lbr_like}}</i>
             </div>
         </div>
     @endforeach

@@ -60,9 +60,14 @@
 
 
                 <div class="form-group">
-                    {{ Form::label('id_G', 'groups') }}
+                    {{ Form::label('id_G', 'groups: ') }}
                     {{ Form::select('group_id', $groups, null, ['class' => 'form-control']) }}
                 </div>
+                @if($idpost!=null)
+                {{ Form::label('id_P', 'Post: ') }}
+                <div class="form-control">{{$namepost}}</div>
+                {{ Form::hidden('id_P', $idpost) }}
+                @endif
 
                 <div class="form-group">
                     {!! form::label('id_A', 'Your name: ')!!}

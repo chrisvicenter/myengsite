@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Unit;
 use App\Group;
+use App\Libro;
 use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
@@ -23,7 +24,12 @@ class PageController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
 
-        return view('web.post', compact('post'));
+        $libros=Post::join('libros', 'posts.id', '=', 'libros.id_P')
+        ->join('autors', 'autors.id', '=', 'libros.id_A')
+        ->select('aut_nombre', 'lbr_titulo', 'lbr_like', 'lbr_imagen', 'lbr_slug')
+        ->where('posts.slug', $slug)->OrderBy('libros.id', 'DESC')->paginate(3);
+
+        return view('web.post', compact('post', 'libros'));
     }
 
     public function unit($slug)
@@ -46,13 +52,13 @@ class PageController extends Controller
         $allgroup = Group::orderBy('id')->paginate(5);
         return view('web.allgroup', compact('allgroup'));
     }
-    //Se buscan las unidades 
+    //Se buscan las unidades
     public function allunit()
     {
         $allunit = Unit::orderBy('id')->paginate(3);
         return view('web.allunit', compact('allunit'));;
     }
-    //Se filtran los posts deacuerdo al grupo y la unidad 
+    //Se filtran los posts deacuerdo al grupo y la unidad
     public function filtro($grpsl, $slug)
     {
         $unit = Unit::where('slug', $slug)->pluck('id')->first();
