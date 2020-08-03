@@ -100,12 +100,17 @@ if(isset($_GET['grpid'])){
                 </div>
                 <div class="form-group">
                     {{ Form::label('youtubebody', 'Video Description') }}
-                    {{ Form::textarea('youtubebody', null, ['class' => 'form-control']) }}
+                    {{ Form::textarea('youtubebody', null, ['class' => 'form-control', 'rows' => '2']) }}
                 </div>
 
                 <div class="form-group form-float">
                     {!! form::label('lbr_soundcloud', 'Sound Cloud url: ')!!}
                     {!! form:: text('lbr_soundcloud', null, ['class'=> 'form-control'])!!}
+
+                </div>
+                <div class="form-group form-float">
+                    {!! form::label('lbr_genially', 'Geanilly url: ')!!}
+                    {!! form:: text('lbr_genially', null, ['class'=> 'form-control'])!!}
 
                 </div>
 

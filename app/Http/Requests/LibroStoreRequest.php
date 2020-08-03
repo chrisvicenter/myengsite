@@ -30,11 +30,6 @@ class LibroStoreRequest extends FormRequest
             'lbr_imagen'=> 'mimes:jpeg,bmp,jpg,png|between:1, 6000',
 
         ];
-
-        /*if($this->get(file('lbr_imagen'))){
-            $rules= array_merge($rules, ['lbr_imagen' => 'mimes:jpeg,png']);
-        }
-        dd($rules, $_REQUEST);*/
         return $rules;
     }
 }

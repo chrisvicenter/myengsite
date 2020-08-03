@@ -10,7 +10,7 @@ class Libro extends Model
 
     protected $fillable=['id','lbr_titulo',
      'lbr_imagen', 'lbr_slug', 'id_A', 'lbr_body', 'id_G',
-    'lbr_youtube', 'youtubebody', 'lbr_soundcloud', 'id_P'
+    'lbr_youtube', 'youtubebody', 'lbr_soundcloud', 'lbr_genially', 'id_P'
 
     ];
 

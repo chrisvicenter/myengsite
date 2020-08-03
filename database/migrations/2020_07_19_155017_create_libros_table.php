@@ -25,6 +25,7 @@ class CreateLibrosTable extends Migration
             $table->text('lbr_youtube')->nullable();
             $table->text('youtubebody')->nullable();
             $table->text('lbr_soundcloud')->nullable();
+            $table->text('lbr_genially')->nullable();
             $table->foreignId('id_P')->nullable();
             $table->foreignId('id_A');
             $table->foreignId('id_G');
