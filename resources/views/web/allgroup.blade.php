@@ -43,7 +43,7 @@
     <div class="card text-center mb-2 mr-2 cursorcolor" style="width: 10rem;">
         <div class="card-body">
             <h3 class="card-title">{{ $group->name }} </h3>
-            <a href="/allunit?grpname={{ $group->name }}&grpslug={{ $group->slug }}" class="btn btn-outline-primary">access</a>            
+            <a href="/allunit?grpname={{ $group->name }}&grpslug={{ $group->slug }}&grpid={{ $group->id }}" class="btn btn-outline-primary">access</a>
         </div>
     </div>
     @endforeach

@@ -25,6 +25,7 @@ class CreateLibrosTable extends Migration
             $table->text('lbr_youtube')->nullable();
             $table->text('youtubebody')->nullable();
             $table->text('lbr_soundcloud')->nullable();
+            $table->foreignId('id_P')->nullable();
             $table->foreignId('id_A');
             $table->foreignId('id_G');
             $table->timestamps();
@@ -35,6 +36,10 @@ class CreateLibrosTable extends Migration
 
             $table->foreign('id_G')
             ->references('id')->on('groups')
+            ->onDelete('cascade');
+
+            $table->foreign('id_P')
+            ->references('id')->on('posts')
             ->onDelete('cascade');
         });
     }

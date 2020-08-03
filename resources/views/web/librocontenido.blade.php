@@ -1,6 +1,7 @@
 @extends("layouts.plantilla")
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/read_and_write.css') }}">
+<link rel="stylesheet" href="css/home.css">
     @section("navigation")
     <!--Menú de la página-->
     <nav class="navbar navbar-expand-md navbar-dark">
@@ -13,7 +14,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item "><a class="nav-link" href="/home">Home</a></li>
                     <li class="nav-item"><a class=" nav-link " href="/allgroup">Groups</a></li>
-                    <li class="nav-item active"><a class="nav-link " href="#">Read</a></li>
+                    <li class="nav-item active"><a class="nav-link " href="/read">Read</a></li>
                     <li class="nav-item "><a class="nav-link " href="/write/create ">Write</a></li>
                 </ul>
             </div>
@@ -24,7 +25,8 @@
     <nav aria-label="breadcrumb " class="rowtop">
         <ol class="breadcrumb">
             @foreach ($contenido as $content)
-            <a href="/read">Read</a> / {{$content->lbr_titulo}}
+            <li class="breadcrumb-item"> <a href="/read">Read</a></li>
+            <li class="breadcrumb-item active"> {{$content->lbr_titulo}}</li>
             @endforeach
         </ol>
     </nav>
