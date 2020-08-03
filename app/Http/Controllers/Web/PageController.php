@@ -20,14 +20,15 @@ class PageController extends Controller
         return view('web.posts', compact('posts'));
     }
 
-    public function post($slug)
+    public function post($slug,$grpid)
     {
         $post = Post::where('slug', $slug)->first();
 
         $libros=Post::join('libros', 'posts.id', '=', 'libros.id_P')
         ->join('autors', 'autors.id', '=', 'libros.id_A')
-        ->select('aut_nombre', 'lbr_titulo', 'lbr_like', 'lbr_imagen', 'lbr_slug')
-        ->where('posts.slug', $slug)->OrderBy('libros.id', 'DESC')->paginate(3);
+        ->select('aut_nombre', 'lbr_titulo', 'lbr_like', 'lbr_imagen', 'lbr_slug', 'id_G')
+        ->where('posts.slug', $slug)->where('libros.id_G',$grpid)
+        ->OrderBy('libros.id', 'DESC')->paginate(3);
 
         return view('web.post', compact('post', 'libros'));
     }

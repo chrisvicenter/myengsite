@@ -5,13 +5,18 @@
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 <title>Read</title>
 @endsection
+<?php
+if(isset($_GET['grpid'])){
+    $grpid = $_GET['grpid'];
+    $grp = $_GET['grpname'];
+}
+?>
 
 @section("navigation")
 <!--Menú de la página-->
 <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container ">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -53,15 +58,21 @@
                         </div>
                     </div>
                 </div>
-            @endif
+                @endif
 
                 {!! Form::open(['route'=> 'write.store', 'method'=> 'POST',
                 'files'=> 'true']) !!}
 
 
                 <div class="form-group">
+                    @if(isset($_GET['grpid']))
+                    {{ Form::label('id_G', 'groups: ') }}
+                    <div class="form-control">{{$grp}}</div>
+                    {{ Form::hidden('group_id', $grpid) }}
+                    @else
                     {{ Form::label('id_G', 'groups: ') }}
                     {{ Form::select('group_id', $groups, null, ['class' => 'form-control']) }}
+                    @endif
                 </div>
                 @if($idpost!=null)
                 {{ Form::label('id_P', 'Post: ') }}
@@ -111,7 +122,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-success">
-                   Publish my story!
+                    Publish my story!
                 </button>
 
                 {!! Form::close() !!}
@@ -133,4 +144,3 @@
 </script>
 
 @endsection
-

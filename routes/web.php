@@ -45,7 +45,7 @@ Route::resource('posts', 'Admin\PostController');
 
 Route::get('/vclass', 'Web\PageController@vclass')->name('vclass');
 
-Route::get('/vclass/{slug}', 'Web\PageController@post')->name('post');
+Route::get('/vclass/{slug}/{grpid}', 'Web\PageController@post')->name('post');
 
 Route::get('/unit/{slug}', 'Web\PageController@unit')->name('unit');
 

@@ -66,6 +66,7 @@ class LibroController extends Controller
      */
     public function store(LibroStoreRequest $request)
     {
+        //dd($request);
         //iniciamos el post
         $IDPOST=null;
         if($request->id_P)

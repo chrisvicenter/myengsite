@@ -3,7 +3,8 @@
 $grp  = $_GET['grpname'];
 $grpsl = $_GET['grpslug'];
 $unt = $_GET['untname'];
-$untsl = $_GET['untslug']
+$untsl = $_GET['untslug'];
+$grpid = $_GET['grpid'];
 ?>
 
 @section("head")
@@ -22,9 +23,9 @@ $untsl = $_GET['untslug']
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item "><a class="nav-link" href="../home">Home</a></li>
+                <li class="nav-item "><a class="nav-link" href="../../home">Home</a></li>
                 <li class="nav-item active"><a class=" nav-link " href="../allgroup">Groups</a></li>
-                <li class="nav-item "><a class="nav-link " href="../read">Read</a></li>
+                <li class="nav-item "><a class="nav-link " href="/read">Read</a></li>
                 <li class="nav-item "><a class="nav-link " href="../../write/create">Write</a></li>
             </ul>
         </div>
@@ -36,11 +37,11 @@ $untsl = $_GET['untslug']
 <!--Breadcrumb página Groups-->
 <nav aria-label="breadcrumb " class="rowtop">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../allgroup">Groups</a></li>
-        <li class="breadcrumb-item"><a href="/allunit?grpname={{$grp}}&grpslug={{$grpsl}}">{{$grp}}</a></li>
+        <li class="breadcrumb-item"><a href="../../allgroup">Groups</a></li>
+        <li class="breadcrumb-item"><a href="/allunit?grpname={{$grp}}&grpslug={{$grpsl}}&grpid={{ $grpid }}">{{$grp}}</a></li>
         <li class="breadcrumb-item active" aria-current="#">
             <a
-                href="{{route('filtro',[$grpsl, $unit=$untsl ])}}?grpname={{$grp}}&grpslug={{$grpsl}}&untname={{$unt}}&untslug={{$untsl}}">
+                href="{{route('filtro',[$grpsl, $unit=$untsl ])}}?grpname={{$grp}}&grpslug={{$grpsl}}&untname={{$unt}}&untslug={{$untsl}}&grpid={{ $grpid }}">
                 {{$unt}}
             </a></li>
         <li class="breadcrumb-item active" aria-current="#">{{$post->name}}</li>
@@ -101,7 +102,7 @@ $untsl = $_GET['untslug']
     @endforeach
 </div>
 <br>
-<a href="{{ route('createlibropost', [$post->id, $post->name]) }}" class="btn btn-primary pull-right" role="button">Add</a>
+<a href="{{ route('createlibropost', [$post->id, $post->name]) }}?grpname={{$grp}}&grpid={{ $grpid }}" class="btn btn-primary pull-right" role="button">Add</a>
 <br>
 <br>
 {{$libros->withQueryString()}}
