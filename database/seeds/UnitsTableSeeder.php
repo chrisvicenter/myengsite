@@ -16,6 +16,7 @@ class GroupsTableSeeder extends Seeder
             'slug' => 'unit-1',
             'body' => 'Unit 1'
         ]);
+        /*
 
         App\Unit::create([
             'name' => 'Unit 2',
@@ -28,5 +29,6 @@ class GroupsTableSeeder extends Seeder
             'slug' => 'unit-3',
             'body' => 'Unit 3'
         ]);
+        */
     }
 }
