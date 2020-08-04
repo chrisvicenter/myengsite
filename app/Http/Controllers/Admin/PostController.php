@@ -94,9 +94,9 @@ class PostController extends Controller
         $post = Post::create($request->all());
 
         //IMAGE
-        if($request->file('image')){      
+        if($request->file('image')){
             $image = $request->file('image')->getRealPath();
-     
+
             Cloudder::upload($image, null, array("folder" => "posts_images"));
 
             list($width, $height) = getimagesize($image);
@@ -104,6 +104,7 @@ class PostController extends Controller
             $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
 
             $post->fill(['file' => $image_url])->save();
+
             
         }        
       
@@ -174,7 +175,7 @@ class PostController extends Controller
         //IMAGE
         if($request->file('image')){
             $image = $request->file('image')->getRealPath();
-     
+
             Cloudder::upload($image, null, array("folder" => "posts_images"));
 
             list($width, $height) = getimagesize($image);

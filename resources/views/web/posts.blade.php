@@ -4,10 +4,11 @@
 $grp  = $_GET['grpname'];
 $grpsl = $_GET['grpslug'];
 $unt = $_GET['untname'];
-$untsl = $_GET['untslug']
+$untsl = $_GET['untslug'];
+$grpid = $_GET['grpid'];
 ?>
 @section("head")
-<title>{{$grp}} / {{$unt}}</title>
+<title>{{$grp}} | {{$unt}}</title>
 @endsection
 
 
@@ -35,7 +36,7 @@ $untsl = $_GET['untslug']
 <nav aria-label="breadcrumb " class="rowtop">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/allgroup">Groups</a></li>
-        <li class="breadcrumb-item"><a href="/allunit?grpname={{$grp}}&grpslug={{$grpsl}}">{{$grp}}</a></li>
+        <li class="breadcrumb-item"><a href="/allunit?grpname={{$grp}}&grpslug={{$grpsl}}&grpid={{ $grpid }}">{{$grp}}</a></li>
         <li class="breadcrumb-item active" aria-current="#">{{$unt}}</li>
     </ol>
 </nav>
@@ -64,7 +65,7 @@ $untsl = $_GET['untslug']
                 @endif
                 <p class="card-text">
                     {{ $post->excerpt }}
-                    <a href="{{ route('post', $post->slug) }}?grpname={{$grp}}&grpslug={{$grpsl}}&untname={{$unt}}&untslug={{$untsl}}" class="pull-right">Read more</a>
+                    <a href="{{ route('post', [$post->slug,$grpid]) }}?grpname={{$grp}}&grpslug={{$grpsl}}&untname={{$unt}}&untslug={{$untsl}}&grpid={{ $grpid }}" class="pull-right">Read more</a>
                 </p>
 
             </div>

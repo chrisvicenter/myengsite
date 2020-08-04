@@ -5,13 +5,18 @@
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 <title>Read</title>
 @endsection
+<?php
+if(isset($_GET['grpid'])){
+    $grpid = $_GET['grpid'];
+    $grp = $_GET['grpname'];
+}
+?>
 
 @section("navigation")
 <!--Menú de la página-->
 <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container ">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -53,16 +58,27 @@
                         </div>
                     </div>
                 </div>
-            @endif
+                @endif
 
                 {!! Form::open(['route'=> 'write.store', 'method'=> 'POST',
                 'files'=> 'true']) !!}
 
 
                 <div class="form-group">
-                    {{ Form::label('id_G', 'groups') }}
+                    @if(isset($_GET['grpid']))
+                    {{ Form::label('id_G', 'groups: ') }}
+                    <div class="form-control">{{$grp}}</div>
+                    {{ Form::hidden('group_id', $grpid) }}
+                    @else
+                    {{ Form::label('id_G', 'groups: ') }}
                     {{ Form::select('group_id', $groups, null, ['class' => 'form-control']) }}
+                    @endif
                 </div>
+                @if($idpost!=null)
+                {{ Form::label('id_P', 'Post: ') }}
+                <div class="form-control">{{$namepost}}</div>
+                {{ Form::hidden('id_P', $idpost) }}
+                @endif
 
                 <div class="form-group">
                     {!! form::label('id_A', 'Your name: ')!!}
@@ -84,12 +100,17 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('youtubebody', 'Video Description') }}
-                    {{ Form::textarea('youtubebody', null, ['class' => 'form-control']) }}
+                    {{ Form::textarea('youtubebody', null, ['class' => 'form-control', 'rows' => '2']) }}
                 </div>
 
                 <div class="form-group form-float">
                     {!! form::label('lbr_soundcloud', 'Sound Cloud url: ')!!}
                     {!! form:: text('lbr_soundcloud', null, ['class'=> 'form-control'])!!}
+
+                </div>
+                <div class="form-group form-float">
+                    {!! form::label('lbr_genially', 'Geanilly url: ')!!}
+                    {!! form:: text('lbr_genially', null, ['class'=> 'form-control'])!!}
 
                 </div>
 
@@ -106,7 +127,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-success">
-                   Publish my story!
+                    Publish my story!
                 </button>
 
                 {!! Form::close() !!}
@@ -128,4 +149,3 @@
 </script>
 
 @endsection
-
