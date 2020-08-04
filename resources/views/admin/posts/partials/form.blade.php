@@ -31,12 +31,20 @@
 	{{ Form::select('unit_id', $units, null, ['class' => 'form-control']) }}
 </div> 
 <div class="form-group">
-    {{ Form::label('excerpt', 'Abstract') }}
-    {{ Form::textarea('excerpt', null, ['class' => 'form-control', 'rows' => '2']) }}
+    {{ Form::label('genially', 'Genially Link:') }}
+    {{ Form::text('genially', null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
     {{ Form::label('youtube', 'YouTube Link:') }}
     {{ Form::text('youtube', null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('soundcloud', 'SoundCloud Link:') }}
+    {{ Form::text('soundcloud', null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('excerpt', 'Abstract') }}
+    {{ Form::textarea('excerpt', null, ['class' => 'form-control', 'rows' => '2']) }}
 </div>
 <div class="form-group">
     {{ Form::label('body', 'Description') }}
