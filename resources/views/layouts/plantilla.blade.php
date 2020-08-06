@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--Generación de Links-->
-    <meta property="og:site_name" content="shopjuca">
-    <meta property="og:url" content="https://www.shopjuca.com/collections/all">
-    <meta property="og:title" content="Productos">
-    <meta property="og:type" content="product.group">
-    <meta property="og:description" content="SI NO TE DIVIERTE, ¿POR QUÉ HABRÍAS DE HACERLO?">
-    <meta property="og:image" content="{{ asset('images/ninosICO.ico')}}">
+    <meta property="og:title" content="My EnG Site" />
+    <meta property="og:type" content="articles">
+    <meta property="og:url" content="http://www.myengsite.com">
+    <meta property="og:image" content="https://res.cloudinary.com/hoefoxwrd/image/upload/v1596731969/logofinalPNG_jnbmuv.png">
+    <meta property="og:description" content="DESCRIPTION">
+    <meta property="og:site_name" content="My EnG Site">
+
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
