@@ -82,9 +82,7 @@
                     My EnG Site 2020 - NanoSoft100
                 </div>
                 <div class="col d-flex justify-content-end">
-                    <a href="#" class="footer-end-link">Home </a>
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href="#" class="footer-end-link">Contacto</a>
+                    <a href="/home" class="footer-end-link">Home </a>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <a href="/loginteacher" class="footer-end-link">Login</a>
                 </div>
