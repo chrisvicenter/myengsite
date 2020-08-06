@@ -9,6 +9,7 @@
 <?php
 $grp  = $_GET['grpname'];
 $grpsl = $_GET['grpslug'];
+$grpid = $_GET['grpid'];
 ?>
 
 
@@ -47,7 +48,7 @@ $grpsl = $_GET['grpslug'];
     <div class="card text-center mb-2 mr-2 cursorcolor" style="width: 10rem;">
         <div class="card-body">
             <h3 class="card-title">{{ $unit->name }} </h3>
-            <a href="{{route('filtro',[$grpsl, $unit->slug ])}}?grpname={{ $grp }}&grpslug={{ $grpsl }}&untname={{ $unit->name }}&untslug={{$unit->slug}}" class="btn btn-outline-primary">access</a>
+            <a href="{{route('filtro',[$grpsl, $unit->slug ])}}?grpname={{ $grp }}&grpslug={{ $grpsl }}&untname={{ $unit->name }}&untslug={{$unit->slug}}&grpid={{ $grpid }}" class="btn btn-outline-primary">access</a>
         </div>
     </div>
     @endforeach

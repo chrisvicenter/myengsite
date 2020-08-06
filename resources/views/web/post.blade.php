@@ -3,11 +3,13 @@
 $grp  = $_GET['grpname'];
 $grpsl = $_GET['grpslug'];
 $unt = $_GET['untname'];
-$untsl = $_GET['untslug']
+$untsl = $_GET['untslug'];
+$grpid = $_GET['grpid'];
 ?>
 
 @section("head")
 <title>{{$post->name}}</title>
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 @endsection
 
@@ -21,9 +23,9 @@ $untsl = $_GET['untslug']
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item "><a class="nav-link" href="../home">Home</a></li>
+                <li class="nav-item "><a class="nav-link" href="../../home">Home</a></li>
                 <li class="nav-item active"><a class=" nav-link " href="../allgroup">Groups</a></li>
-                <li class="nav-item "><a class="nav-link " href="../read">Read</a></li>
+                <li class="nav-item "><a class="nav-link " href="/read">Read</a></li>
                 <li class="nav-item "><a class="nav-link " href="../../write/create">Write</a></li>
             </ul>
         </div>
@@ -35,11 +37,11 @@ $untsl = $_GET['untslug']
 <!--Breadcrumb página Groups-->
 <nav aria-label="breadcrumb " class="rowtop">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../allgroup">Groups</a></li>
-        <li class="breadcrumb-item"><a href="/allunit?grpname={{$grp}}&grpslug={{$grpsl}}">{{$grp}}</a></li>
+        <li class="breadcrumb-item"><a href="../../allgroup">Groups</a></li>
+        <li class="breadcrumb-item"><a href="/allunit?grpname={{$grp}}&grpslug={{$grpsl}}&grpid={{ $grpid }}">{{$grp}}</a></li>
         <li class="breadcrumb-item active" aria-current="#">
             <a
-                href="{{route('filtro',[$grpsl, $unit=$untsl ])}}?grpname={{$grp}}&grpslug={{$grpsl}}&untname={{$unt}}&untslug={{$untsl}}">
+                href="{{route('filtro',[$grpsl, $unit=$untsl ])}}?grpname={{$grp}}&grpslug={{$grpsl}}&untname={{$unt}}&untslug={{$untsl}}&grpid={{ $grpid }}">
                 {{$unt}}
             </a></li>
         <li class="breadcrumb-item active" aria-current="#">{{$post->name}}</li>
@@ -68,7 +70,7 @@ $untsl = $_GET['untslug']
 
                 {!! $post->body !!}
             </p>
-            
+
             @if($post->fileall)
             <a href="{{ $post->fileall }}" class="btn btn-info" target="_blank">
                 Download
@@ -78,5 +80,31 @@ $untsl = $_GET['untslug']
     </div>
 </div>
 <hr>
+<div class="titlemost text-center">
+    <h1>Books</h1>
+</div>
+<div class="card-deck mt-5">
+    @foreach($libros as $thumbnail)
+        <div class="card">
+            <div class="tmncont">
+                <img src="{{$thumbnail->lbr_imagen}}" class="imgtmn rounded">
+
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
+                <h6 class="card-title">Autor: {{$thumbnail->aut_nombre}}</h6>
+            </div>
+            <div class="card-footer">
+                <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
+                <i class="oi oi-thumb-up reactionlbr mt-2">{{$thumbnail->lbr_like}}</i>
+            </div>
+        </div>
+    @endforeach
+</div>
+<br>
+<a href="{{ route('createlibropost', [$post->id, $post->name]) }}?grpname={{$grp}}&grpid={{ $grpid }}" class="btn btn-primary pull-right" role="button">Add</a>
+<br>
+<br>
+{{$libros->withQueryString()}}
 <!--Footer de la página-->
 @endsection
