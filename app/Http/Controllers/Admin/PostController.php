@@ -113,11 +113,21 @@ class PostController extends Controller
             
             $path = Storage::disk('public')->put('filealls',  $request->file('filex'));           
      
-            Cloudder::upload($path, null, array("folder" => "posts_files","resource_type" =>'auto'));
+            Cloudder::upload($path, null, array("folder" => "posts_files","resource_type" =>"raw",
+                    array("transformation"=>array("flag"=>"attachment"))));
 
-            $result=Cloudder::getResult();          
+            $result=Cloudder::getResult();
+            dd($result);
+            //$post->fill(['fileall' => $result['secure_url']])->save();
+            
 
-            $post->fill(['fileall' => $result['url']])->save();
+
+            
+
+                                        
+            //$post->fill(['fileall' => $result])->save();
+
+            
         }
 
         //GROUPS
