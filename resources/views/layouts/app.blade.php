@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--Generación de Links-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Productos">
+    <meta name="twitter:description" content="SI NO TE DIVIERTE, ¿POR QUÉ HABRÍAS DE HACERLO?"> 
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
