@@ -20,12 +20,14 @@
     <link rel="stylesheet" href="{{ asset('css/plantila.css') }}">
     <link rel="stylesheet" href="{{ asset('font/css/open-iconic-bootstrap.min.css') }}">
 
+
     <!-- Fuentes-->
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
 
     <!-- Icono -->
     <link rel="shortcut icon" href="{{ asset('images/ninosICO.ico')}}">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 
     @yield('head')
 </head>

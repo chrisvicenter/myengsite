@@ -3,10 +3,11 @@
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/read_and_write.css') }}">
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
 <title>Read</title>
 @endsection
 <?php
-if(isset($_GET['grpid'])){
+if (isset($_GET['grpid'])) {
     $grpid = $_GET['grpid'];
     $grp = $_GET['grpname'];
 }
@@ -38,114 +39,130 @@ if(isset($_GET['grpid'])){
 
     </ol>
 </nav>
-<br>
-<div class="row">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel-read">
+<div class="cont-back-img">
+    <br>
+    <div class="container">
+        <div class="row d-flex flex-column  align-items-center">
+            <div class=" col-md-10 col-md-offset-1 ">
 
-            <div class="panel-body">
-                @if(count($errors))
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+
+                <div class="panel-body">
+                    @if(count($errors))
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endif
-
-                {!! Form::open(['route'=> 'write.store', 'method'=> 'POST',
-                'files'=> 'true']) !!}
-
-
-                <div class="form-group">
-                    @if(isset($_GET['grpid']))
-                    {{ Form::label('id_G', 'groups: ') }}
-                    <div class="form-control">{{$grp}}</div>
-                    {{ Form::hidden('group_id', $grpid) }}
-                    @else
-                    {{ Form::label('id_G', 'groups: ') }}
-                    {{ Form::select('group_id', $groups, null, ['class' => 'form-control']) }}
                     @endif
+
+                    {!! Form::open(['route'=> 'write.store', 'method'=> 'POST',
+                    'files'=> 'true']) !!}
+
+
+                    <div class="form-group">
+                        @if(isset($_GET['grpid']))
+                        {{ Form::label('id_G', 'Group ') }}
+                        <ion-icon name="people" class="mg-btn-oi" style="color: #4bc4d1;"></ion-icon>&nbsp;:
+                        <div class="form-control">{{$grp}}</div>
+                        {{ Form::hidden('group_id', $grpid) }}
+                        @else
+                        {{ Form::label('id_G', 'Select your group ') }}
+                        <ion-icon name="people" class="mg-btn-oi" style="color: #4bc4d1;"></ion-icon>&nbsp;:
+                        {{ Form::select('group_id', $groups, null, ['class' => 'form-control']) }}
+                        @endif
+                    </div>
+                    @if($idpost!=null)
+                    {{ Form::label('id_P', 'Post ') }}
+                    <ion-icon name="library" class="mg-btn-oi" style="color: #4bc4d1;"></ion-icon>&nbsp;:
+                    <div class="form-control">{{$namepost}}</div>
+                    {{ Form::hidden('id_P', $idpost) }}
+                    @endif
+
+                    <div class="form-group">
+                        {!! form::label('id_A', 'Your name ')!!}
+                        <span class="oi oi-pencil color-oi"></span>&nbsp;:
+                        {!! form:: text('student', null, ['class'=> 'form-control'])!!}
+
+                    </div>
+
+
+                    <div class="form-group form-float">
+                        {!! form::label('lbr_titulo', 'Title')!!}
+                        <span class="oi oi-pencil color-oi"></span>&nbsp;:
+                        {!! form:: text('title', null, ['class'=> 'form-control'])!!}
+
+                    </div>
+
+                    <div class="form-group form-float">
+                        {!! form::label('lbr_youtube', 'Youtube url ')!!}
+                        <ion-icon name="logo-youtube" class="mg-btn-oi" style="color: red; "></ion-icon>&nbsp;:
+                        {!! form:: text('lbr_youtube', null, ['class'=> 'form-control'])!!}
+
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('youtubebody', 'Video Description') }}
+                        <span class="oi oi-pencil color-oi"></span>&nbsp;:
+                        {{ Form::textarea('youtubebody', null, ['class' => 'form-control', 'rows' => '2']) }}
+                    </div>
+
+                    <div class="form-group form-float">
+                        {!! form::label('lbr_soundcloud', 'Sound Cloud url ')!!}
+                        <ion-icon name="logo-soundcloud" class="mg-btn-oi" style="background-color: #ff5500; color: white;"></ion-icon>&nbsp;:
+                        {!! form:: text('lbr_soundcloud', null, ['class'=> 'form-control'])!!}
+
+                    </div>
+                    <div class="form-group form-float">
+                        {!! form::label('lbr_genially', 'Genially url ')!!}
+                        <ion-icon name="create-outline" class="mg-btn-oi color-oi"></ion-icon>&nbsp;:
+                        {!! form:: text('lbr_genially', null, ['class'=> 'form-control'])!!}
+
+                    </div>
+                    <div class=" form-group">
+                        {!! form::label('lbr_imagen', 'Choose an image ')!!}
+                        <ion-icon name="image" class="mg-btn-oi color-oi"></ion-icon>&nbsp;:
+                        {!! form:: file('lbr_imagen', null, ['class'=> 'form-control'])!!}
+
+                    </div>  
+
+                    <div class="form-group form-float">
+                        {!! form::label('lbr_body', 'Write your story ')!!}
+                        <ion-icon name="book-outline" class="mg-btn-oi"></ion-icon>&nbsp;<span class="oi oi-pencil color-oi"></span>&nbsp;:
+                        {!! form:: textarea('body', null, ['class'=> 'form-control'])!!}
+
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-success">
+                        Publish my story!
+                    </button>
+
+                    {!! Form::close() !!}
+
                 </div>
-                @if($idpost!=null)
-                {{ Form::label('id_P', 'Post: ') }}
-                <div class="form-control">{{$namepost}}</div>
-                {{ Form::hidden('id_P', $idpost) }}
-                @endif
-
-                <div class="form-group">
-                    {!! form::label('id_A', 'Your name: ')!!}
-                    {!! form:: text('student', null, ['class'=> 'form-control'])!!}
-
-                </div>
-
-
-                <div class="form-group form-float">
-                    {!! form::label('lbr_titulo', 'Title')!!}
-                    {!! form:: text('title', null, ['class'=> 'form-control'])!!}
-
-                </div>
-
-                <div class="form-group form-float">
-                    {!! form::label('lbr_youtube', 'Youtube url: ')!!}
-                    {!! form:: text('lbr_youtube', null, ['class'=> 'form-control'])!!}
-
-                </div>
-                <div class="form-group">
-                    {{ Form::label('youtubebody', 'Video Description') }}
-                    {{ Form::textarea('youtubebody', null, ['class' => 'form-control', 'rows' => '2']) }}
-                </div>
-
-                <div class="form-group form-float">
-                    {!! form::label('lbr_soundcloud', 'Sound Cloud url: ')!!}
-                    {!! form:: text('lbr_soundcloud', null, ['class'=> 'form-control'])!!}
-
-                </div>
-                <div class="form-group form-float">
-                    {!! form::label('lbr_genially', 'Geanilly url: ')!!}
-                    {!! form:: text('lbr_genially', null, ['class'=> 'form-control'])!!}
-
-                </div>
-
-                <div class="form-group form-float">
-                    {!! form::label('lbr_body', 'Write your story: ')!!}
-                    {!! form:: textarea('body', null, ['class'=> 'form-control'])!!}
-
-                </div>
-
-                <div class="form-group">
-                    {!! form::label('lbr_imagen', 'Choose a image: ')!!}
-                    {!! form:: file('lbr_imagen', null, ['class'=> 'form-control'])!!}
-
-                </div>
-
-                <button type="submit" class="btn btn-success">
-                    Publish my story!
-                </button>
-
-                {!! Form::close() !!}
-
             </div>
+
+
         </div>
+        <br>
+        <script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
+        <script>
+            CKEDITOR.config.height = 400;
+            CKEDITOR.config.width = 'auto';
+            CKEDITOR.replace('body');
+        </script>
     </div>
 
 </div>
+<hr>
 
-
-
-<br>
-<script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
-<script>
-    CKEDITOR.config.height = 400;
-    CKEDITOR.config.width = 'auto';
-    CKEDITOR.replace('body');
-</script>
 
 @endsection

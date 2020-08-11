@@ -1,78 +1,86 @@
 .card-contenido {
-
     flex: 1 400px;
     padding: 10px 5px 10px 5px;
     margin-right: 5px;
     margin-bottom: 5px;
-
 }
 
 
-.panel-read{
+/*.panel-read {
     float: right;
-    margin-right: 10% ;
+    margin-right: 10%;
     margin-bottom: 10%;
-}
+}*/
 
-.imagelibro{
+.imagelibro {
     width: 100%;
-
-
 }
 
-.textlbr{
+.textlbr {
     margin-top: 10%;
     text-align: justify;
-
 }
 
-
-.reactionlbr{
+.reactionlbr {
     padding-left: 3%;
 }
 
-.tittlelbro{
-
+.tittlelbro {
     margin-bottom: 1%;
 }
 
-.content-lbr{
-text-align: justify;
+.content-lbr {
+    text-align: justify;
 }
 
-
-.Card_ima_thum{
+.Card_ima_thum {
     width: 100%;
     height: 70%;
 }
 
-
-.reactionconte{
+.reactionconte {
     margin: auto;
 }
 
-.img-librcont{
+.img-librcont {
     width: 60%;
     height: auto;
     display: block;
-    margin:auto;
+    margin: auto;
     margin-top: 1%;
-
 }
-.img-libro{
+
+.img-libro {
     height: 480px
 }
-.img-car{
+
+.img-car {
     padding: 1px 1px 0 1px;
     height: 315px;
 }
 
-@media(max-width: 1000px){
-    .img-libro{
+
+/*Blade Write*/
+
+.mg-btn-oi {
+    font-size: 20px;
+    margin-bottom: -5px;
+}
+
+.color-oi {
+    color: #083b66;
+}
+
+.cont-back-img {
+    background-image: url("../images/double-bubble-outline.png");
+}
+
+@media(max-width: 1000px) {
+    .img-libro {
         height: 250px;
     }
 }
 
-.hiddenpost{
+.hiddenpost {
     visibility: hidden;
 }
