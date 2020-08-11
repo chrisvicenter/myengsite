@@ -99,6 +99,10 @@
     transform: scale(1.03);
 }
 
+.txtflt {
+    float: right;
+}
+
 @media (max-width: 991.98px) {
     /*Imagenes Carousel*/
     .carouseltmn {
@@ -140,6 +144,9 @@
         bottom: 0;
     }
     .sizetlt {
-        font-size: 14px;
+        font-size: 35px;
+    }
+    .txtflt {
+        float: left;
     }
 }

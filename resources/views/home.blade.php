@@ -10,8 +10,7 @@
 <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container ">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -80,24 +79,32 @@
 <!--fin del carousel-->
 
 <hr>
-<h3 class="titlemost text-center"><em>Most Outstanding</em></h3>
-<!--cuentos mas destacados-->
-<div class="d-flex flex-wrap">
-    @foreach($libros1 as $thumbnail)
-        <div class="card col-sm-6 mt-3 imgdisn">
+<div class="container">
+    <h3 class="titlemost text-center sizetlt "><em>Most Outstanding</em></h3>
+    <hr>
+    <!--cuentos mas destacados-->
+    <div class="d-flex flex-wrap">
+        @foreach($libros1 as $thumbnail)
+        <div class=" col-sm-6 mt-3 imgdisn">
             <div class="tmncont">
                 <img src="{{$thumbnail->lbr_imagen}}" class="imgtmn rounded">
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
-                <h6 class="card-title">Autor: {{$thumbnail->aut_nombre}}</h6>
-            </div>
-            <div class="card-footer">
-                <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
-                <i class="oi oi-thumb-up reactionlbr text-primary mt-1">{{$thumbnail->lbr_like}}</i>
+
+                <div class="float-left">
+                    <h5 class="card-title ">{{$thumbnail->lbr_titulo}}</h5>
+                    <h6 class="card-title ">Autor: {{$thumbnail->aut_nombre}}</h6>
+                    <i class="oi oi-thumb-up reactionlbr text-primary mt-1">{{$thumbnail->lbr_like}}</i>
+                </div>
+                <div class="txtflt ">
+                    <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
+                   
+                </div>
+
             </div>
         </div>
-    @endforeach
+        @endforeach
+    </div>
 </div>
 <hr>
 @endsection
