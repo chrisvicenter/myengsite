@@ -27,4 +27,26 @@ class Libro extends Model
         return $this->belongTo('App\Post', 'id_P');
 
      }
+
+     public function scopeBuscarpor($query, $tipo, $buscar)
+     {
+        if($tipo && $buscar)
+        {
+            return $query->join('autors', 'libros.id_A', '=', 'autors.id')->select('aut_nombre', 'lbr_titulo',
+            'lbr_like', 'lbr_imagen', 'lbr_slug')->where("$tipo", 'LIKE', "%$buscar%")->orderby('libros.id', 'desc');
+        }
+     }
+
+     public function scopeBuscarporgroup($query, $tipo, $buscar, $idgroup){
+
+        if($tipo && $buscar)
+        {
+            return $query->join('autors', 'libros.id_A', '=', 'autors.id')->select('aut_nombre', 'lbr_titulo',
+            'lbr_like', 'lbr_imagen', 'lbr_slug', 'id_G')
+            ->where("$tipo", 'LIKE', "%$buscar%")
+            ->where('id_G', '=', $idgroup)
+            ->orderby('libros.id', 'desc');
+        }
+
+     }
 }
