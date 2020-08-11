@@ -28,21 +28,41 @@ class LibroController extends Controller
     public function index(Request $request)
     {
 
-        //$autnom=Libro::all();
+        $groups=Group::select('id', 'name', 'slug')->orderby('id', 'ASC')->get();
+
         //Si exite una petición buscamos por el campo "buscar"
         //y lo mandamos a la vista 'IMAGENES'
         if($request)
         {
-            $titulo=strtoupper($request->get('buscarpor'));
+
+            $tipo=$request->get('tipo');
 
             $libros=Libro::join('autors', 'libros.id_A', '=', 'autors.id')->select('aut_nombre', 'lbr_titulo',
-            'lbr_like', 'lbr_imagen', 'lbr_slug', 'youtubebody')->where('lbr_titulo', 'LIKE', "%$titulo%")->orderby('libros.id', 'desc')
+            'lbr_like', 'lbr_imagen', 'lbr_slug', 'youtubebody')->orderby('libros.id', 'desc')
             ->paginate(4);
+
+            if($tipo=="Title")
+            {
+            $titulo=strtoupper($request->get('buscarpor'));
+            $tipo="lbr_titulo";
+            $libros=Libro::buscarpor($tipo, $titulo)->paginate(4);
+            }
+
+
+            if($tipo=="Autor")
+            {
+                $nombre=$request->get('buscarpor');
+                $tipo="aut_nombre";
+                $libros=Libro::buscarpor($tipo, $nombre)->paginate(4);
+            }
+
+
+
 
 
         }
 
-        return view('web.read',\compact("libros"));
+        return view('web.read',\compact("libros", "groups"));
     }
 
     /**
@@ -108,6 +128,34 @@ class LibroController extends Controller
        //guardamos el body de youtube
         $youtube=$request['youtubebody'];
         //////////////
+        /////////////
+        //Si existe url en Soundcloud
+        $Soundcloud=null;
+        if(!($request['lbr_soundcloud']=='')){
+            $Soundcloud='<hr>
+                <h3>SoundCloud</h3>
+                <div class="embed-responsive embed-responsive-21by9">
+                <iframe class="embed-responsive-item" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url='.
+                    $request['lbr_soundcloud'].
+                '&color=%23083b66&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                </div>';
+        }
+
+        ////////////////////////
+
+        //si existe url en Genially
+        $Genially=null;
+        if(!($request['lbr_genially']=='')){
+            $Genially='<h3>Genially</h3>
+                <div style="width: 100%;">
+                <div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;">
+                <iframe frameborder="0" width="1200px" height="675px" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="'.
+                    $request['lbr_genially'].
+                '" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all">
+                </iframe>
+                </div>
+                </div>';
+        }
 
        //capturamos el nombre del autor
        //y luego buscamos su id
@@ -123,17 +171,26 @@ class LibroController extends Controller
             $id_A=$id_A->id;
         }
 
-        //guardamos los campos que traemos del request en la tabla libros
+
+        //creamos el slug
+        $slug=Str::slug($request->lbr_titulo);
+        //guardamos e titulo en mayúsculas
+        $titulo=$request->lbr_titulo;
+        /////////////////
+        ////////////////
+           //guardamos los campos que traemos del request en la tabla libros
         $Libro= new Libro();
-        $Libro->lbr_titulo=strtoupper($request->title);
+        $Libro->lbr_titulo=$titulo;
         $Libro->lbr_imagen=$ruta;
-        $Libro->lbr_slug=Str::slug($request->title);
+        $Libro->lbr_slug=$slug;
         $Libro->lbr_body=$request->body;
         $Libro->id_G=$grou;
         $Libro->id_A=$id_A;
         $Libro->lbr_youtube=$request->lbr_youtube;
         $Libro->youtubebody=$youtube;
         $Libro->id_P=$IDPOST;
+        $Libro->lbr_soundcloud=$Soundcloud;
+        $Libro->lbr_genially=$Genially;
         $Libro->save();
         return redirect()->route('write.index');
     }
@@ -222,6 +279,49 @@ class LibroController extends Controller
         $groups = Group::orderBy('name', 'ASC')->pluck('name', 'id');
 
         return view('web.write', \compact('groups', 'idpost', 'namepost'));
+    }
+
+    public function lbrgroupread(Request $request, $groupname, $idgroup)
+    {
+       //grupos
+        $groups=Group::select('id', 'name', 'slug')->orderby('id', 'ASC')->get();
+
+        //libros que pertenecen al grupo
+        $groupslibros=Libro::join('autors', 'libros.id_A', '=', 'autors.id')->
+        join('groups', 'libros.id_G', '=', 'groups.id')
+        ->select('aut_nombre', 'lbr_titulo',
+        'lbr_like', 'lbr_imagen', 'lbr_slug', 'groups.id')
+        ->where("groups.id", '=', "$idgroup")->orderby('libros.id', 'desc')
+        ->paginate(4);
+        //nombre del grupo
+        $groupname=Group::select('name')->where('id', '=', $idgroup)->first();
+
+        $tipo=$request->get('tipo');
+        //si queremos buscar por medio del filtro
+        if($request!=null)
+        {
+            $titulo=null;
+            $nombre=null;
+            if($tipo=="Title")
+            {
+            $titulo=strtoupper($request->get('buscarpor'));
+            $tipo="lbr_titulo";
+            $groupslibros=Libro::buscarporgroup($tipo, $titulo, $idgroup)->paginate(4);
+            }
+
+
+            if($tipo=="Autor")
+            {
+                $nombre=$request->get('buscarpor');
+                $tipo="aut_nombre";
+                $groupslibros=Libro::buscarporgroup($tipo, $nombre,  $idgroup)->paginate(4);
+            }
+
+        }
+
+        return view('web.readgrouplbr',\compact("groupslibros", "groups", "groupname", "titulo", "nombre"));
+
+
     }
 
 }

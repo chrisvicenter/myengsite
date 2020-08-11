@@ -1,8 +1,7 @@
 @extends("layouts.plantilla")
-
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/read_and_write.css') }}">
-<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 <title>Read</title>
 @endsection
 
@@ -18,7 +17,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item "><a class="nav-link" href="/home">Home</a></li>
                 <li class="nav-item"><a class=" nav-link " href="/allgroup">Groups</a></li>
-                <li class="nav-item active"><a class="nav-link " href="#">Read</a></li>
+                <li class="nav-item active"><a class="nav-link " href="/read">Read</a></li>
                 <li class="nav-item "><a class="nav-link " href="/write/create ">Write</a></li>
             </ul>
         </div>
@@ -31,6 +30,11 @@
 <nav aria-label="breadcrumb " class="rowtop">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active"><a href="/read">Read</a></li>
+
+        <li class="breadcrumb-item">{{$groupname->name}}</li>
+
+
+
     </ol>
 </nav>
 
@@ -54,9 +58,9 @@
     </form>
 </nav>
 <!--agregar-->
-<a href="{{url('/write/create')}}" class="btn btn-primary pull-right" role="button">Add a new book</a>
+<a href="{{url('/write/create')}}" class="btn btn-primary pull-right" role="button">Add new book!</a>
 
-    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Filter by Group</button>
+    <button type="button" class="btn btn-primary ml-2" data-toggle="collapse" data-target="#demo">Filter by Group</button>
     <div id="demo" class="collapse mt-5">
         <div class="d-flex flex-wrap justify-content-center">
 
@@ -71,28 +75,30 @@
 
         </div>
     </div>
+
+
 <!--cards-->
+<div class="card-deck mt-5">
+    @foreach($groupslibros as $thumbnail)
+        <div class="card">
+            <div class="tmncont">
+                <img src="{{$thumbnail->lbr_imagen}}" class="imgtmn rounded">
 
-        <div class="card-deck mt-5">
-            @foreach($libros as $thumbnail)
-                <div class="card">
-                    <div class="tmncont">
-                        <img src="{{$thumbnail->lbr_imagen}}" class="imgtmn rounded">
-
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
-                        <h6 class="card-title">Autor: {{$thumbnail->aut_nombre}}</h6>
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
-                        <i class="oi oi-thumb-up reactionlbr text-primary mt-2">{{$thumbnail->lbr_like}}</i>
-                    </div>
-                </div>
-            @endforeach
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{$thumbnail->lbr_titulo}}</h5>
+                <h6 class="card-title">Autor: {{$thumbnail->aut_nombre}}</h6>
+            </div>
+            <div class="card-footer">
+                <a href="{{ route('read.show', $thumbnail->lbr_slug) }}" class="btn btn-primary">Read!</a><br>
+                <i class="oi oi-thumb-up reactionlbr text-primary mt-2">{{$thumbnail->lbr_like}}</i>
+            </div>
         </div>
-        <br>
-        {{$libros->withQueryString()}}
+    @endforeach
+</div>
+<br>
+{{$groupslibros->withQueryString()}}
+
 
 
 @endsection

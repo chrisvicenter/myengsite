@@ -15,8 +15,8 @@ class CreateLibrosTable extends Migration
     {
         Schema::create('libros', function (Blueprint $table) {
             $table->id('id');
-            $table->string('lbr_titulo', 255);
-            $table->string('lbr_slug', 255)->unique();
+            $table->string('lbr_titulo', 255)->unique();
+            $table->string('lbr_slug', 255);
             $table->text('lbr_body');
             $table->integer('lbr_like')->default(0);
             $table->integer('lbr_smile')->default(0);

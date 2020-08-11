@@ -84,3 +84,7 @@
 .hiddenpost {
     visibility: hidden;
 }
+.upercase{
+    text-transform: uppercase;
+}
+

@@ -86,12 +86,15 @@ if (isset($_GET['grpid'])) {
                     {{ Form::hidden('id_P', $idpost) }}
                     @endif
 
+
                     <div class="form-group">
                         {!! form::label('id_A', 'Your name ')!!}
                         <span class="oi oi-pencil color-oi"></span>&nbsp;:
                         {!! form:: text('student', null, ['class'=> 'form-control'])!!}
 
+
                     </div>
+
 
 
                     <div class="form-group form-float">
@@ -99,12 +102,14 @@ if (isset($_GET['grpid'])) {
                         <span class="oi oi-pencil color-oi"></span>&nbsp;:
                         {!! form:: text('title', null, ['class'=> 'form-control'])!!}
 
+
                     </div>
 
                     <div class="form-group form-float">
                         {!! form::label('lbr_youtube', 'Youtube url ')!!}
                         <ion-icon name="logo-youtube" class="mg-btn-oi" style="color: red; "></ion-icon>&nbsp;:
                         {!! form:: text('lbr_youtube', null, ['class'=> 'form-control'])!!}
+
 
                     </div>
                     <div class="form-group">
@@ -164,5 +169,11 @@ if (isset($_GET['grpid'])) {
 </div>
 <hr>
 
+<script>
+    function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
+</script>
 
 @endsection
+
