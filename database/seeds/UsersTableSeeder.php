@@ -11,6 +11,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //Insertar seed
+        App\User::create([
+            'name' => 'Medium Usuario',
+            'email' => 'medi@correo.com',
+            'password' => bcrypt('123Nano_100')
+        ]);
+
+        App\User::create([
+            'name' => 'Viviana',
+            'email' => 'Vivi@correo.com',
+            'password' => bcrypt('teacherviviana011_V')
+        ]);
     }
 }
