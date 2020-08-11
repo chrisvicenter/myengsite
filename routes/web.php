@@ -70,4 +70,6 @@ Route::get('/allgroup/{grpsl}/{slug}', 'Web\PageController@filtro')->name('filtr
 
 //Ruta para la creación de un libro desde un post
 Route::get('write/create/{idpost}/{namepost}', 'Web\LibroController@libropost' )->name('createlibropost');
+//Buscamos los libros desde el boton de grupos en read
+Route::get('/{groupname}/{idgroup}', 'Web\LibroController@lbrgroupread')->name('readgrouplbr');
 

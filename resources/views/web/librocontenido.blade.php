@@ -91,7 +91,13 @@
                             </div>
                             <div class="card-body content-lbr">
                                 <p class="card-text"> {!!$youtube!!}</p>
-                              </div>
+                            </div>
+                            <div class="card-body content-lbr">
+                                <p class="card-text"> {!!$thumbnail->lbr_soundcloud!!}</p>
+                            </div>
+                            <div class="card-body content-lbr">
+                                <p class="card-text"> {!!$thumbnail->lbr_genially!!}</p>
+                            </div>
                         </div>
                     @endforeach
 

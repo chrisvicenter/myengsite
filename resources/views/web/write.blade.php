@@ -82,14 +82,14 @@ if(isset($_GET['grpid'])){
 
                 <div class="form-group">
                     {!! form::label('id_A', 'Your name: ')!!}
-                    {!! form:: text('student', null, ['class'=> 'form-control'])!!}
+                    {!! form:: text('student', null, ['class'=> 'form-control '])!!}
 
                 </div>
 
 
                 <div class="form-group form-float">
-                    {!! form::label('lbr_titulo', 'Title')!!}
-                    {!! form:: text('title', null, ['class'=> 'form-control'])!!}
+                    {!! form::label('lbr_titulo', 'Title: ')!!}
+                    {!! form:: text('lbr_titulo', null, ['class'=> 'form-control', 'onkeyup'=>'mayus(this)'])!!}
 
                 </div>
 
@@ -99,7 +99,7 @@ if(isset($_GET['grpid'])){
 
                 </div>
                 <div class="form-group">
-                    {{ Form::label('youtubebody', 'Video Description') }}
+                    {{ Form::label('youtubebody', 'Video Description: ') }}
                     {{ Form::textarea('youtubebody', null, ['class' => 'form-control', 'rows' => '2']) }}
                 </div>
 
@@ -146,6 +146,12 @@ if(isset($_GET['grpid'])){
     CKEDITOR.config.height = 400;
     CKEDITOR.config.width = 'auto';
     CKEDITOR.replace('body');
+</script>
+
+<script>
+    function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
 </script>
 
 @endsection
