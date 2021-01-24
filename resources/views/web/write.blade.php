@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/read_and_write.css') }}">
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
-<title>Read</title>
+<title>Write</title>
 @endsection
 <?php
 if (isset($_GET['grpid'])) {

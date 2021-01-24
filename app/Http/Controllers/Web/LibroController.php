@@ -173,9 +173,9 @@ class LibroController extends Controller
 
 
         //creamos el slug
-        $slug=Str::slug($request->lbr_titulo);
+        $slug=Str::slug($request->title);
         //guardamos e titulo en mayúsculas
-        $titulo=$request->lbr_titulo;
+        $titulo=$request->title;
         /////////////////
         ////////////////
            //guardamos los campos que traemos del request en la tabla libros
