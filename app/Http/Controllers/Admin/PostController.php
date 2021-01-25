@@ -73,10 +73,10 @@ class PostController extends Controller
                 '<hr>
                 <h3>YouTube</h3>
                 <div class="embed-responsive embed-responsive-21by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/'.
-                    substr($request['youtube'], 32, 43).
-                '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/'.
+                        substr($request['lbr_youtube'], 32, 11). 
+                        '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
                 </div>';
         }
 

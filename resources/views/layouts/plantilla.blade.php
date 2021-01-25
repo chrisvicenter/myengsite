@@ -55,21 +55,24 @@
             <div class="row">
                 <div class="col-sm-4 d-flex flex-column align-items-start ">
                     <h5>About Web</h5>
-                    <p class="sizecont">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Phasellus nec lorem eu risus imperdiet viverra consequat id lorem.
-                        Curabitur vitae nisl in augue sodales porta. Ut vel sollicitudin dolor.</p>
+                    <p class="sizecont">
+                        Web interactiva para la socialización y creación de microcuentos de estudiantes que deseen
+                        hechar a volar su imaginación.
+                    </p>
                 </div>
                 <div class="col-sm-4 d-flex flex-column align-items-start">
                     <h5>Principal Teacher</h5>
-                    <p class="sizecont">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Phasellus nec lorem eu risus imperdiet viverra consequat id lorem.
-                        Curabitur vitae nisl in augue sodales porta. Ut vel sollicitudin dolor.</p>
+                    <p class="sizecont">
+                        Viviana Chicaiza <br>
+                        Bachelor in Education <br>
+                        English Teacher as second language Academia Aeronáutica Mayor Pedro Travesari<br>
+                        English Teacher initial and primary section
+                    </p>
                 </div>
                 <div class="col-sm-4 d-flex flex-column align-items-start">
                     <h5>Social Network</h5>
-                    <a href="https://www.instagram.com/ " class="sizecont">Instagram</a>
-                    <a href="https://www.facebook.com/ " class="sizecont">facebook</a>
-                    <a href="https://www.twitter.com/ " class="sizecont">Twitter</a>
+                    <a href="mailto:myengsite@gmail.com " class="sizecont">myengsite@gmail.com</a>
+                    <a href="http://www.myengsite.com/" class="sizecont">@myengsite</a>
                 </div>
             </div>
         </div>

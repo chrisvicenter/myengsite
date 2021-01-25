@@ -119,10 +119,10 @@ class LibroController extends Controller
         if(!($request['lbr_youtube']=='')){
             $request['youtubebody']=$request['youtubebody'].
                 '<div class="embed-responsive embed-responsive-21by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/'.
-                    substr($request['lbr_youtube'], 32, 43).
-                '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/'.
+                        substr($request['lbr_youtube'], 32, 11). 
+                        '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
                 </div>';
         }
        //guardamos el body de youtube
