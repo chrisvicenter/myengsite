@@ -51,7 +51,7 @@
 }
 
 .titlecapt {
-    padding-top: 5%;
+    padding-top: 2%;
     color: #4bc4d1;
     font-size: 40px;
 }
@@ -119,11 +119,6 @@
         /* asignar el color y  transparencia */
         position: absolute;
         bottom: 0;
-    }
-    .titlecapt {
-        padding-top: 5%;
-        color: #4bc4d1;
-        font-size: 25px;
     }
     .txtcapt {
         color: #083b66;
