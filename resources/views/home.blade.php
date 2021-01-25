@@ -61,8 +61,6 @@
             <p class="txtcapt">
                 My EnGSite se representa como una web lúdica y a la misma vez como una herramienta que desarrolla determinadas funciones, y que puede ser aplicada en el campo educativo
                 dentro de la enseñanza del idioma generando la participacion activa del estudiante, convirtiéndolo en un estudiante crítico y creativo.
-                Ectendiendo su aprendizaje a través de las actividades incluidas en sus clases como la creación de historias, aceptar retos de escritura,
-                describir y crear historias a partir de una imagen, etc. Usando herramientas colaborativas como el Blog creativo, la incorporación de podcast para mejorar la
             </p>
         </div>
     </div>
